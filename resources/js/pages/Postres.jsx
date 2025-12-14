@@ -1,9 +1,13 @@
 import React from 'react'
 import ItemsList from '../components/ItemsList'
+import SectionHeader from '../components/SectionHeader'
 
 const Postres = () => {
   return (
-    <ItemsList id={5}/>
+    <>
+      <SectionHeader id={5} />
+      <ItemsList id={5} />
+    </>
   )
 }
 
