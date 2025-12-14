@@ -14,32 +14,32 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::firstOrCreate(
-            ['name'=> 'pizzas'],
+            ['name'=> 'Pizzas'],
             ['description' => 'Deliciosas pizzas artesanales con ingredientes frescos y masas crujientes.']
         );
         
         Category::firstOrCreate(
-            ['name'=> 'hamburguesas'],
+            ['name'=> 'Hamburguesas'],
             ['description' => 'Hamburguesas jugosas con carne premium y sabores irresistibles.']
         );
         
         Category::firstOrCreate(
-            ['name'=> 'acompañamientos'],
+            ['name'=> 'Acompañamientos'],
             ['description' => 'Papas, nuggets, salsas y acompañamientos perfectos para tu menú.']
         );
         
         Category::firstOrCreate(
-            ['name'=> 'bebidas'],
+            ['name'=> 'Bebidas'],
             ['description' => 'Bebidas frías y refrescantes para acompañar cualquier comida.']
         );
         
         Category::firstOrCreate(
-            ['name'=> 'postres'],
+            ['name'=> 'Postres'],
             ['description' => 'Dulces tentaciones ideales para cerrar tu comida con broche de oro.']
         );
         
         Category::firstOrCreate(
-            ['name'=> 'extras'],
+            ['name'=> 'Extras'],
             ['description' => 'Agrega extras como salsas, toppings y opciones adicionales a tu pedido.']
         );
         
