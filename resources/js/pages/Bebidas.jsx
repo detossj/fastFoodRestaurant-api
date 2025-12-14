@@ -5,8 +5,8 @@ import SectionHeader from '../components/SectionHeader'
 const Bebidas = () => {
   return (
     <>
-      <SectionHeader id={6} />
-      <ItemsList id={6} />
+      <SectionHeader id={4} />
+      <ItemsList id={4} />
     </>
   )
 }
