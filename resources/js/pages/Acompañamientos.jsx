@@ -1,9 +1,13 @@
 import React from 'react'
 import ItemsList from '../components/ItemsList'
+import SectionHeader from '../components/SectionHeader'
 
 const Acompañamientos = () => {
   return (
-    <ItemsList id={3}/>
+    <>
+      <SectionHeader id={3} />
+      <ItemsList id={3} />
+    </>
   )
 }
 
