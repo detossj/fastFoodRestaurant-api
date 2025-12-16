@@ -1,8 +1,11 @@
 import React from 'react'
+import PromotionsList from '../components/PromotionsList'
 
 const Promociones = () => {
   return (
-    <div>Promociones</div>
+    <>
+      <PromotionsList/>
+    </>
   )
 }
 
