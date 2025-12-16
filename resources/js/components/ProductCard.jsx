@@ -1,8 +1,8 @@
 import React from 'react';
-import './ItemCard.css';
+import './ProductCard.css';
 import Config from '../Config';
 
-const ItemCard = ({ product }) => {
+const ProductCard = ({ product }) => {
   return (
     <div className="product-card shadow rounded p-3">
 
@@ -43,4 +43,4 @@ const ItemCard = ({ product }) => {
   );
 };
 
-export default ItemCard;
+export default ProductCard;
