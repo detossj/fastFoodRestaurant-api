@@ -1,12 +1,12 @@
 import React from 'react'
-import ItemsList from '../components/ItemsList'
 import SectionHeader from '../components/SectionHeader'
+import ProductsList from '../components/ProductsList'
 
 const Acompañamientos = () => {
   return (
     <>
       <SectionHeader id={3} />
-      <ItemsList id={3} />
+      <ProductsList id={3} />
     </>
   )
 }
