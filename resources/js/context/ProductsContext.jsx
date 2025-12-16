@@ -9,6 +9,7 @@ const ProductsContext = createContext(null);
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [promotions, setPromotions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -17,17 +18,22 @@ export const ProductsProvider = ({ children }) => {
     setError(null);
 
     try {
-      const [productsRes, categoriesRes] = await Promise.all([
+      const [productsRes, categoriesRes, promotionsRes] = await Promise.all([
         Config.getAllProducts(),
         Config.getAllCategories(),
+        Config.getAllPromotions()
       ]);
 
       setProducts(productsRes?.data ?? []);
       setCategories(categoriesRes?.data ?? []);
+      setPromotions(promotionsRes?.data ?? []);
+
+      console.log("Promotions Response: ", promotionsRes);
     } catch (err) {
       console.error("Error cargando datos:", err);
       setProducts([]);
       setCategories([]);
+      setPromotions([]);
       setError("Error al cargar productos o categorías");
     } finally {
       setLoading(false);
@@ -40,7 +46,7 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     // al colocar los products y el loading en el value hace que cualquier componente pueda leerlos usando el useProducts que se define abajo
-    <ProductsContext.Provider value={{ products, categories, loading, error}}>
+    <ProductsContext.Provider value={{ products, categories, promotions, loading, error}}>
       {children}
     </ProductsContext.Provider>
   );
