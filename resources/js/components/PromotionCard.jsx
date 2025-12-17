@@ -1,23 +1,21 @@
 import React from 'react'
+import './PromotionCard.css';
 import Config from '../Config'
 
 const PromotionCard = ({ promotion }) => {
     return (
-        <div className="product-card shadow rounded p-3">
-  
-        <div className="product-img-wrapper mb-3">
+      <div className="promotion-card shadow rounded px-4 py-3 w-100">
+        <div className="promotion-img-wrapper mb-3">
           <img 
-            src={`${Config.API_BASE_URL}/storage/products${promotion.image_url}`}
+            src={`${Config.API_BASE_URL}/storage/promotions${promotion.image_url}`}
             alt={promotion.name}
-            className="product-img"
+            className="promotion-img"
             loading='lazy'
             decoding="async"
-            width="500px"
-            height="260"
           />
         </div>
   
-        <div className="product-info mt-2">
+        <div className="promotion-info mt-2">
             <h5 className="fw-bold text-center">{promotion.name}</h5>
   
             <p className="text-muted text-center small">
@@ -25,8 +23,8 @@ const PromotionCard = ({ promotion }) => {
             </p>
         </div>
   
-        <div className="product-bottom">
-            <p className="product-price text-center fw-semibold">
+        <div className="promotion-bottom">
+            <p className="promotion-price text-center fw-semibold">
               ${promotion.price}
             </p>
   
