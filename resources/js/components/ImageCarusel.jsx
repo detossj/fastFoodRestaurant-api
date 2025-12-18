@@ -2,8 +2,16 @@ import React from 'react'
 import burgerImg from '../../assets/images/burger-potato.webp';
 import pizzaDrinkImg from '../../assets/images/pizza-drink.webp';
 import pizzaDrinkGarlicsticksImg from '../../assets/images/pizza-drink-garlicsticks.webp';
+import { useNavigate } from 'react-router-dom';
 
 const ImageCarusel = () => {
+
+  const navigate = useNavigate()
+
+  const onClick = () => {
+    navigate('/promociones')
+  }
+
   return (
     <div className="container mt-5">
 
@@ -15,21 +23,30 @@ const ImageCarusel = () => {
         <div className="carousel-inner">
 
           <div className="carousel-item active">
-            <img src={burgerImg} className="d-block w-100"
-                 style={{ height: '500px', objectFit: 'cover' }}
-                 alt="Hamburguesa con papas" />
+            <img 
+              src={burgerImg} className="d-block w-100"
+              style={{ height: '500px', objectFit: 'cover' }}
+              alt="Hamburguesa con papas"
+              onClick={onClick} 
+            />
           </div>
 
           <div className="carousel-item">
-            <img src={pizzaDrinkImg} className="d-block w-100"
-                 style={{ height: '500px', objectFit: 'cover' }}
-                 alt="Pizza con bebida" />
+            <img 
+              src={pizzaDrinkImg} className="d-block w-100"
+              style={{ height: '500px', objectFit: 'cover' }}
+              alt="Pizza con bebida" 
+              onClick={onClick}   
+            />
           </div>
 
           <div className="carousel-item">
-            <img src={pizzaDrinkGarlicsticksImg} className="d-block w-100"
-                 style={{ height: '500px', objectFit: 'cover' }}
-                 alt="Pizza de pepperoni" />
+            <img 
+              src={pizzaDrinkGarlicsticksImg} className="d-block w-100"
+              style={{ height: '500px', objectFit: 'cover' }}
+              alt="Pizza de pepperoni" 
+              onClick={onClick} 
+            />
           </div>
 
         </div>
