@@ -28,9 +28,7 @@ const PromotionCard = ({ promotion }) => {
               ${promotion.price}
             </p>
   
-            <button className="btn btn-primary px-4" 
-              style={{backgroundColor: "rgb(249, 124, 47)", borderColor: 'rgb(249, 124, 47)'}}
-            >
+            <button className="btn btn-primary px-4 promotion-button" >
               Agregar
             </button>
         </div>
