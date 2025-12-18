@@ -10,7 +10,12 @@
   background-color: rgb(249, 124, 47);
   color: white !important;
   border-radius: 15px;
-  padding: 10px;
+}
+
+.navbar-item:hover {
+  color: rgb(250, 99, 6);
+  background-color: lightgray;
+  border-radius: 15px;
 }
 .navbar-wrapper {
   position: sticky;
