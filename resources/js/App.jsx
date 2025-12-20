@@ -14,6 +14,7 @@ import Bebidas from './pages/Bebidas';
 import Postres from './pages/Postres';
 import Extras from './pages/Extras';
 import { ProductsProvider } from './context/ProductsContext';
+import Locales from './pages/Locales';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
               <Route path='/bebidas' element={<Bebidas/>}/>
               <Route path='/postres' element={<Postres/>}/>
               <Route path='/extras' element={<Extras/>}/>
+              <Route path='/locales' element={<Locales/>}/>
             </Route>
         </Routes>
     </Router>
