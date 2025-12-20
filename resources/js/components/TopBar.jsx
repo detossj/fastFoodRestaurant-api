@@ -38,15 +38,6 @@ const TopBar = () => {
             </NavLink>
 
             <NavLink
-              to="/pedidos"
-              className={({ isActive }) =>
-                isActive ? "topbar-item active" : "topbar-item"
-              }
-            >
-              <i className="fa-solid fa-receipt me-1"></i> PEDIDOS
-            </NavLink>
-
-            <NavLink
               to="/locales"
               className={({ isActive }) =>
                 isActive ? "topbar-item active" : "topbar-item"
