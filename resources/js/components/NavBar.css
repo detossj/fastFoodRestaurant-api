@@ -30,4 +30,21 @@
   margin-left: 20px; 
 }
 
+.cart-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background-color: rgb(249, 124, 47);
+  border: 1px solid rgb(249, 124, 47);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+}
+.cart-count {
+  margin: 0;
+  font-size: 18px;
+}
+
+
   
