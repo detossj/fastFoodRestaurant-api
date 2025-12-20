@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './NavBar.css';
 import logo from '../../assets/images/logo.webp';
+import { FaCartShopping } from "react-icons/fa6";
+
 
 const Navbar = () => {
 
@@ -125,6 +127,12 @@ const Navbar = () => {
                 </li>
 
               </ul>
+
+              <button className="cart-button ms-auto">
+                <FaCartShopping size={22} />
+                <span className="cart-count">0</span>
+              </button>
+              
             </div>
 
           </div>
