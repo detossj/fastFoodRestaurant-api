@@ -15,6 +15,8 @@ import Postres from './pages/Postres';
 import Extras from './pages/Extras';
 import { ProductsProvider } from './context/ProductsContext';
 import Locales from './pages/Locales';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 const App = () => {
@@ -31,6 +33,8 @@ const App = () => {
               <Route path='/postres' element={<Postres/>}/>
               <Route path='/extras' element={<Extras/>}/>
               <Route path='/locales' element={<Locales/>}/>
+              <Route path='/login' element={<Login/>}/>
+              <Route path='/register' element={<Register/>}/>
             </Route>
         </Routes>
     </Router>
