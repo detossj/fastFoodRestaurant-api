@@ -16,7 +16,14 @@ const TopBar = () => {
     "/extras"
   ];
 
+  const activeAuthPaths = [
+    "/login",
+    "/register",
+  ];
+
   const isMenuActive = activeMenuPaths.includes(location.pathname);
+
+  const isAuthActive = activeAuthPaths.includes(location.pathname);
 
   return (
     <div className="py-2" style={{borderBottom: "1px solid #e5e5e5"}}>
@@ -48,9 +55,7 @@ const TopBar = () => {
 
             <NavLink
               to="/login"
-              className={({ isActive }) =>
-                isActive ? "topbar-item active" : "topbar-item"
-              }
+              className={isAuthActive ? "topbar-item active" : "topbar-item"}
             >
               <i className="fa-solid fa-user me-1"></i> INGRESAR
             </NavLink>
