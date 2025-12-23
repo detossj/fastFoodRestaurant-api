@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Config from '../Config';
 
 const Login = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const submitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await Config.Login({
+        email,
+        password,
+      });
+  
+      console.log("Inicio de sesión exitoso:", response.data);
+    } catch (error) {
+      console.error("Error en registro:", error.response?.data || error);
+    }
+  };
+
   return (
     <div className='container d-flex justify-content-center align-items-center' style={{ height: "60vh" }} >
             <div className='col-sm-10 col-md-6 col-lg-4'>
@@ -18,7 +37,9 @@ const Login = () => {
                             <input 
                                 type="text" 
                                 className='form-control' 
-                                placeholder='corrreo@gmail.com'
+                                placeholder='correo@gmail.com'
+                                value={email}
+                                onChange={(e)=>setEmail(e.target.value)}
                                 required
                             />
                         </div>
@@ -31,11 +52,13 @@ const Login = () => {
                                 type="password" 
                                 className='form-control' 
                                 placeholder='Contraseña' 
+                                value={password}
+                                onChange={(e)=>setPassword(e.target.value)}
                                 required
                             />
                         </div>
                         
-                        <button className='btn w-100' style={{backgroundColor: 'rgb(249, 124, 47)', color: 'white'}}>
+                        <button className='btn w-100' style={{backgroundColor: 'rgb(249, 124, 47)', color: 'white'}} onClick={submitLogin}>
                           INGRESAR
                         </button>
 
