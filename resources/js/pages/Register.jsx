@@ -4,6 +4,9 @@ import Config from '../Config'
 const Register = () => {
 
   const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [address, setAddress] = useState("")
+  const [phone, setPhone] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
@@ -12,6 +15,9 @@ const Register = () => {
     try {
       const response = await Config.Register({
         email,
+        name,
+        address,
+        phone,
         password,
         password_confirmation: passwordConfirmation
       });
@@ -24,7 +30,7 @@ const Register = () => {
   
 
   return (
-    <div className='container d-flex justify-content-center align-items-center' style={{ height: "60vh" }} >
+    <div className='container d-flex justify-content-center align-items-center' style={{ height: "100vh" }} >
             <div className='col-sm-10 col-md-6 col-lg-4'>
                 <div className='card shadow-lg login-card p-4' >
                     <div className='card-body d-flex flex-column align-items-center'>
@@ -43,6 +49,48 @@ const Register = () => {
                                 placeholder='correo@gmail.com'
                                 value={email}
                                 onChange={(e)=>setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        <div className="w-100 mb-3"> 
+                            <label className='form-label w-100 text-start'>
+                              Nombre Completo
+                            </label>
+                            <input 
+                                type="text" 
+                                className='form-control' 
+                                placeholder='Juan Perez'
+                                value={name}
+                                onChange={(e)=>setName(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        <div className="w-100 mb-3"> 
+                            <label className='form-label w-100 text-start'>
+                              Dirección
+                            </label>
+                            <input 
+                                type="text" 
+                                className='form-control' 
+                                placeholder='Serrano 405'
+                                value={address}
+                                onChange={(e)=>setAddress(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        <div className="w-100 mb-3"> 
+                            <label className='form-label w-100 text-start'>
+                              Número de Teléfono
+                            </label>
+                            <input 
+                                type="text" 
+                                className='form-control' 
+                                placeholder='989088185'
+                                value={phone}
+                                onChange={(e)=>setPhone(e.target.value)}
                                 required
                             />
                         </div>
