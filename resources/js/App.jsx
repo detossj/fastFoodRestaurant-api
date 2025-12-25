@@ -17,12 +17,16 @@ import { ProductsProvider } from './context/ProductsContext';
 import Locales from './pages/Locales';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import PublicRoutes from './pageAuth/PublicRoutes';
+import LayoutAdmin from './layouts/LayoutAdmin';
+import ProtectedRoutes from './pageAuth/ProtectedRoutes';
 
 
 const App = () => {
   return (
     <Router>
         <Routes>
+          <Route element={<PublicRoutes/>}>
             <Route path='/' element={<LayoutPublic/>}>
               <Route index element={<Home/>}/>
               <Route path='/promociones' element={<Promociones/>}/>
@@ -36,6 +40,14 @@ const App = () => {
               <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}/>
             </Route>
+          </Route>
+
+          <Route element={<ProtectedRoutes/>}>
+            <Route path="/admin" element={<LayoutAdmin/>}>
+            
+            </Route>
+          </Route>
+            
         </Routes>
     </Router>
   )
