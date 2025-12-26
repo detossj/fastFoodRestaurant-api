@@ -38,11 +38,20 @@ class AuthController extends Controller
             'address' => $validated['address']
         ]);
 
-        $response['token'] = $user->createToken('mobile')->plainTextToken;
-        $response['user'] = $user;
-        $response['success'] = true;
+        //  Asigna el rol
+        $user->assignRole('client');
 
-        return response()->json($response, 201);
+        // Cargar el rol
+        $user->load('roles');
+        
+        // Crea token 
+        $token = $user->createToken('mobile')->plainTextToken;
+       
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+            'token' => $token,
+        ], 201);
     }
 
     public function login (Request $request) {
@@ -68,12 +77,17 @@ class AuthController extends Controller
             ]);
         }
 
-        $response['token'] = $user->createToken('mobile')->plainTextToken;
-        $response['user'] = $user;
-        $response['message'] = "Login success";
-        $response['success'] = true;
+        $user->hasRole('client');
 
-        return response()->json($response, 200);
+        // Se genera el token
+        $token = $user->createToken('mobile')->plainTextToken;
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Inicio Exitoso',
+            'user' => $user,
+            'token' => $token,
+        ]);
         
     }
 
