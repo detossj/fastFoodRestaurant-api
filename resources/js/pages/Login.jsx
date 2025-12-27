@@ -1,81 +1,114 @@
 import React, { useState } from 'react'
 import Config from '../Config';
+import { useAuth } from "../context/AuthContext"
 
 const Login = () => {
+  const { login } = useAuth()
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const submitLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+
     try {
-      const response = await Config.Login({
-        email,
-        password,
-      });
-  
-      console.log("Inicio de sesión exitoso:", response.data);
-    } catch (error) {
-      console.error("Error en registro:", error.response?.data || error);
+      const { data } = await Config.Login({ email, password })
+
+      if (data.success) {
+        login(
+          data.user,
+          data.token,
+          data.user.roles[0].name
+        )
+      } else {
+        setError("Credenciales incorrectas")
+      }
+    } catch (err) {
+      console.error(err)
+      setError("Error al iniciar sesión")
+    } finally {
+      setLoading(false)
     }
-  };
+  }
 
   return (
-    <div className='container d-flex justify-content-center align-items-center' style={{ height: "60vh" }} >
-            <div className='col-sm-10 col-md-6 col-lg-4'>
-                <div className='card shadow-lg login-card p-4' >
-                    <div className='card-body d-flex flex-column align-items-center'>
-                        
-                        <h2 className='fw-bold'>
-                            Iniciar sesión
-                        </h2> 
-                        
-                        <div className="w-100 mb-3"> 
-                            <label className='form-label w-100 text-start'>
-                              Correo
-                            </label>
-                            <input 
-                                type="text" 
-                                className='form-control' 
-                                placeholder='correo@gmail.com'
-                                value={email}
-                                onChange={(e)=>setEmail(e.target.value)}
-                                required
-                            />
-                        </div>
-                        
-                        <div className="w-100 mb-4">
-                            <label htmlFor="password-input" className='form-label w-100 text-start'>
-                              Contraseña
-                            </label>
-                            <input 
-                                type="password" 
-                                className='form-control' 
-                                placeholder='Contraseña' 
-                                value={password}
-                                onChange={(e)=>setPassword(e.target.value)}
-                                required
-                            />
-                        </div>
-                        
-                        <button className='btn w-100' style={{backgroundColor: 'rgb(249, 124, 47)', color: 'white'}} onClick={submitLogin}>
-                          INGRESAR
-                        </button>
+    <div
+      className='container d-flex justify-content-center align-items-center'
+      style={{ height: "60vh" }}
+    >
+      <div className='col-sm-10 col-md-6 col-lg-4'>
+        <div className='card shadow-lg p-4'>
+          <div className='card-body'>
 
-                        <div className='w-100 text-center mt-3'>
-                          <p className='d-inline'>¿No tiene cuenta? </p>
-                          <a 
-                              href="/register" 
-                              className='d-inline fw-bold text-primary text-decoration-none'
-                          >
-                              Regístrese aquí
-                          </a>
-                      </div>
+            <h2 className='fw-bold text-center mb-4'>
+              Iniciar sesión
+            </h2>
 
-                    </div>
-                </div>
+            {error && (
+              <div className='alert alert-danger'>
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={submitLogin}>
+
+              <div className='mb-3'>
+                <label className='form-label'>
+                  Correo
+                </label>
+                <input
+                  type='email'
+                  className='form-control'
+                  placeholder='correo@gmail.com'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className='mb-4'>
+                <label className='form-label'>
+                  Contraseña
+                </label>
+                <input
+                  type='password'
+                  className='form-control'
+                  placeholder='Contraseña'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+
+              <button
+                type='submit'
+                className='btn w-100'
+                style={{ backgroundColor: 'rgb(249, 124, 47)', color: 'white' }}
+                disabled={loading}
+              >
+                {loading ? 'Ingresando...' : 'INGRESAR'}
+              </button>
+
+            </form>
+
+            <div className='text-center mt-3'>
+              <span>¿No tiene cuenta? </span>
+              <a
+                href='/register'
+                className='fw-bold text-primary text-decoration-none'
+              >
+                Regístrese aquí
+              </a>
             </div>
+
+          </div>
         </div>
+      </div>
+    </div>
   )
 }
 
