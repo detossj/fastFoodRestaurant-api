@@ -50,28 +50,56 @@ const TopBar = () => {
             <i className="fa-solid fa-store me-1"></i> LOCALES
           </NavLink>
 
-          {/* LOGIN / USER */}
-          {!user ? (
+
+          {user ? (
+            <div className="d-flex align-items-center gap-2">
+
+              <span className="topbar-item">
+                <i className="fa-solid fa-user me-1"></i> {user.name}
+              </span>
+
+              <div className="dropdown">
+                <a
+                  href="#"
+                  className="topbar-item dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                </a>
+
+                <ul className="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <NavLink className="dropdown-item" to="/perfil">
+                      Perfil
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="dropdown-item" to="/pedidos">
+                      Pedidos
+                    </NavLink>
+                  </li>
+                  <li>
+                    <button
+                      className="dropdown-item text-danger"
+                      onClick={logout}
+                    >
+                      Cerrar sesión
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          ) : (
             <NavLink
               to="/login"
               className={isAuthActive ? "topbar-item active" : "topbar-item"}
             >
               <i className="fa-solid fa-user me-1"></i> INGRESAR
             </NavLink>
-          ) : (
-            <div className="d-flex align-items-center gap-2">
-              <span className="topbar-item">
-                <i className="fa-solid fa-user me-1"></i> {user.name}
-              </span>
-
-              <button
-                className="btn btn-sm btn-outline-danger"
-                onClick={logout}
-              >
-                Salir
-              </button>
-            </div>
           )}
+
 
         </div>
       </div>
