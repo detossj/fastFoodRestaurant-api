@@ -21,6 +21,8 @@ import PublicRoutes from './pageAuth/PublicRoutes';
 import LayoutAdmin from './layouts/LayoutAdmin';
 import ProtectedRoutes from './pageAuth/ProtectedRoutes';
 import { AuthProvider } from './context/AuthContext';
+import Pedidos from './pages/Pedidos';
+import Perfil from './pages/Perfil';
 
 
 const App = () => {
@@ -44,6 +46,8 @@ const App = () => {
           </Route>
 
           <Route element={<ProtectedRoutes/>}>
+            <Route path='/pedidos' element={<Pedidos/>}/>
+            <Route path='/perfil' element={<Perfil/>}/>
             <Route path="/admin" element={<LayoutAdmin/>}>
             
             </Route>
