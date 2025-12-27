@@ -20,6 +20,7 @@ import Register from './pages/Register';
 import PublicRoutes from './pageAuth/PublicRoutes';
 import LayoutAdmin from './layouts/LayoutAdmin';
 import ProtectedRoutes from './pageAuth/ProtectedRoutes';
+import { AuthProvider } from './context/AuthContext';
 
 
 const App = () => {
@@ -59,10 +60,12 @@ if (document.getElementById('root')) {
     const Index = ReactDOM.createRoot(document.getElementById("root"));
 
     Index.render(
-      <ProductsProvider>
-        <React.StrictMode>
-          <App/>
-        </React.StrictMode>
-      </ProductsProvider>
+      <AuthProvider>
+        <ProductsProvider>
+          <React.StrictMode>
+            <App/>
+          </React.StrictMode>
+        </ProductsProvider>
+      </AuthProvider>
     )
 }
