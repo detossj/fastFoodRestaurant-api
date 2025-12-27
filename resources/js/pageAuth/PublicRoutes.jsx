@@ -1,19 +1,15 @@
 import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import AuthUser from './AuthUser'
+import { Navigate, Outlet, useLocation } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
 
 const PublicRoutes = () => {
-  const { getToken, getRol } = AuthUser()
+  const { token, rol } = useAuth()
+  const location = useLocation()
 
-  if(getToken()) {
-    // Redirige según el rol
-    const rol = getRol()
-    if(rol === 'admin') {
-        return <Navigate to="/admin" />
-    } 
-    else {
-        return <Navigate to="/" />
-    }
+  const authPages = ["/login", "/register"]
+
+  if (token && authPages.includes(location.pathname)) {
+    return <Navigate to={rol === "admin" ? "/admin" : "/"} replace />
   }
 
   return <Outlet />
