@@ -1,16 +1,13 @@
 import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import AuthUser from './AuthUser'
+import { Navigate, Outlet } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
 
 const ProtectedRoutes = () => {
-  const { getToken } = AuthUser()
+  const { token } = useAuth()
 
-  if(!getToken()) {
-    return <Navigate to={'/'} />
-  }
-  return (
-    <Outlet/>
-  )
+  if (!token) return <Navigate to="/" replace />
+
+  return <Outlet />
 }
 
 export default ProtectedRoutes
