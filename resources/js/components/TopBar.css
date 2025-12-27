@@ -14,4 +14,11 @@
 .topbar-item.active {
   color: rgb(249, 124, 47);
 }
+
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item:active {
+  background-color: transparent !important;
+  color: inherit !important;
+  box-shadow: none !important;
+}
   
