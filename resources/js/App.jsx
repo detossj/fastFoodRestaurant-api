@@ -45,11 +45,16 @@ const App = () => {
             </Route>
           </Route>
 
-          <Route element={<ProtectedRoutes/>}>
-            <Route path='/pedidos' element={<Pedidos/>}/>
-            <Route path='/perfil' element={<Perfil/>}/>
-            <Route path="/admin" element={<LayoutAdmin/>}>
-            
+          <Route element={<ProtectedRoutes />}>
+            <Route element={<LayoutPublic />}>
+              <Route path='/pedidos' element={<Pedidos />} />
+              <Route path='/perfil' element={<Perfil />} />
+            </Route>
+          </Route>
+
+          <Route element={<ProtectedRoutes role="admin"/>}>
+            <Route path="/admin" element={<LayoutAdmin />}>
+              <Route index element={<Home/>}/>
             </Route>
           </Route>
             
