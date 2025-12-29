@@ -2,9 +2,9 @@ import React from 'react';
 import './ProductCard.css';
 import Config from '../Config';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onClick }) => {
   return (
-    <div className="product-card shadow rounded p-3">
+    <div className="product-card shadow rounded p-3"  onClick={onClick} >
 
       <div className="product-img-wrapper mb-3">
         <img 
