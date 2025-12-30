@@ -27,7 +27,7 @@ const ProductCard = ({ product, onClick }) => {
       </div>
 
       <div className="product-bottom">
-        <button className="add-cart-btn">
+        <button className="add-cart-btn-card">
           AGREGAR <span className="price">{product.price}</span>
         </button>
       </div>
