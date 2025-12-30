@@ -18,23 +18,21 @@ const ProductCard = ({ product, onClick }) => {
         />
       </div>
 
-      <div className="product-info mt-2">
+      <div className="product-info mt-3">
           <h5 className="fw-bold text-center">{product.name}</h5>
 
-          <p className="text-muted text-center small">
+          <p className="text-muted text-center small mt-3">
             {product.description ?? 'Sin descripción disponible.'}
           </p>
       </div>
 
       <div className="product-bottom">
-          <p className="product-price text-center fw-semibold">
-            ${product.price}
-          </p>
-
-          <button className="btn btn-primary px-4 product-button">
-            Agregar
-          </button>
+        <button className="add-cart-btn">
+          AGREGAR <span className="price">{product.price}</span>
+        </button>
       </div>
+
+
 
     </div>
 
