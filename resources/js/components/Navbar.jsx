@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom'
 import './NavBar.css';
 import logo from '../../assets/images/logo.webp';
 import { FaCartShopping } from "react-icons/fa6";
+import Cart from './Cart';
 
 
 const Navbar = () => {
 
   const [scrolled, setScrolled] = useState(false);
-
+  const [cart, setCart] = useState(false)
 
   useEffect(() => {
     // Funcion para que la navbar quede pegada arriba al scrollear
@@ -19,6 +20,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const showCart = (e) => {
+    e.preventDefault();
+    setCart(true);
+  };
 
 
   return (
@@ -128,7 +134,7 @@ const Navbar = () => {
 
               </ul>
 
-              <button className="cart-button ms-auto">
+              <button className="cart-button ms-auto" onClick={(e)=>showCart(e)}>
                 <FaCartShopping size={22} />
                 <span className="cart-count">0</span>
               </button>
@@ -138,7 +144,10 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
+
+      {cart && <Cart onClose={() => setCart(false)} />}
     </div>
+
   )
 }
 
