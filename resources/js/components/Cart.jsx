@@ -4,28 +4,28 @@ import './Cart.css'
 
 const Cart = ({ onClose }) => {
 
-  const [productos, setProductos] = useState([
-    { id: 1, nombre: 'Hamburguesa', precio: 4500, cantidad: 1 },
-    { id: 2, nombre: 'Pizza', precio: 8000, cantidad: 2 },
-    { id: 3, nombre: 'Bebida', precio: 1500, cantidad: 1 },
+  const [products, setProducts] = useState([
+    { id: 1, name: 'Pizza Napolitana', price: 8900, quantity: 1, image_url: '/pizza-napolitana.webp' },
+    { id: 2, name: 'Hamburguesa Doble', price: 6200, quantity: 2, image_url: '/hamburguesa-doble.webp' },
+    { id: 3, name: 'Coca-Cola Zero 350ml', price: 1500, quantity: 1, image_url: '/coca-cola-zero-350ml.webp' },
   ])
 
-  const aumentar = (id) => {
-    setProductos(productos.map(p =>
-      p.id === id ? { ...p, cantidad: p.cantidad + 1 } : p
+  const increase = (id) => {
+    setProducts(products.map(p =>
+      p.id === id ? { ...p, quantity: p.quantity + 1 } : p
     ))
   }
 
-  const disminuir = (id) => {
-    setProductos(productos.map(p =>
-      p.id === id && p.cantidad > 1
-        ? { ...p, cantidad: p.cantidad - 1 }
+  const decrease = (id) => {
+    setProducts(products.map(p =>
+      p.id === id && p.quantity > 1
+        ? { ...p, quantity: p.quantity - 1 }
         : p
     ))
   }
 
-  const total = productos.reduce(
-    (acc, p) => acc + p.precio * p.cantidad,
+  const total = products.reduce(
+    (acc, p) => acc + p.price * p.quantity,
     0
   )
 
@@ -35,17 +35,21 @@ const Cart = ({ onClose }) => {
 
         <h2>Tu pedido</h2>
 
-        {productos.map(producto => (
-          <ItemCart
-            key={producto.id}
-            producto={producto}
-            onSumar={aumentar}
-            onRestar={disminuir}
-          />
-        ))}
+        <div className="cart-items">
+          {products.map(product => (
+            <ItemCart
+              key={product.id}
+              product={product}
+              onIncrease={increase}
+              onDecrease={decrease}
+            />
+          ))}
+        </div>
 
-        <hr />
-        <h3>Total: ${total}</h3>
+        <div className="cart-total">
+          <span>Total</span>
+          <span>${total}</span>
+        </div>
 
       </div>
     </div>
