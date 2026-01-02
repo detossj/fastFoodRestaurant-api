@@ -1,22 +1,33 @@
 import React from 'react'
+import './ItemCart.css'
+import Config from '../Config'
 
-const ItemCart = ({ producto, onSumar, onRestar }) => {
-  const { id, nombre, precio, cantidad } = producto
+const ItemCart = ({ product, onIncrease, onDecrease }) => {
+  const { id, name, price, quantity, image_url } = product
 
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '10px',
-      marginBottom: '12px'
-    }}>
-      <span style={{ flex: 1 }}>{nombre}</span>
+    <div className="item-cart">
 
-      <button onClick={() => onRestar(id)}>-</button>
-      <span>{cantidad}</span>
-      <button onClick={() => onSumar(id)}>+</button>
+      <img
+        src={`${Config.API_BASE_URL}/storage/products${image_url}`}
+        alt={name}
+        className="item-cart-img"
+      />
 
-      <span>${precio * cantidad}</span>
+      <div className="item-cart-info">
+        <span className="item-cart-name">{name}</span>
+
+        <div className="item-cart-bottom">
+          <div className="quantity-selector">
+            <button className="qty-btn" onClick={() => onDecrease(id)}>-</button>
+            <span>{quantity}</span>
+            <button className="qty-btn" onClick={() => onIncrease(id)}>+</button>
+          </div>
+
+          <span className="item-cart-price">${price}</span>
+        </div>
+      </div>
+
     </div>
   )
 }
