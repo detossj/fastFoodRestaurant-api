@@ -33,6 +33,14 @@ const Cart = ({ onClose }) => {
     <div className="cart-overlay" onClick={onClose}>
       <div className="cart-drawer" onClick={e => e.stopPropagation()}>
 
+        <button
+          className="close-btn-circle"
+          onClick={onClose}
+          aria-label="Cerrar"
+        >
+          <i className="fa-solid fa-xmark"></i>
+        </button>
+
         <h2>Tu pedido</h2>
 
         <div className="cart-items">
