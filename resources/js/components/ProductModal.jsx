@@ -2,14 +2,22 @@ import React, { useState } from 'react'
 import './ProductModal.css'
 
 const ProductModal = ({ product, close }) => {
-
   const [quantity, setQuantity] = useState(1)
 
   return (
     <div className="modal_bg">
       <div className="modal_content">
-        <div className="modal_body">
 
+        <button
+          className="close-btn-circle"
+          onClick={() => close(false)}
+          aria-label="Cerrar"
+        >
+          <i className="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <div className="modal_body">
           <img
             src={`storage/products/${product.image_url}`}
             alt={product.name}
@@ -44,17 +52,6 @@ const ProductModal = ({ product, close }) => {
           </button>
 
         </div>
-
-
-        </div>
-
-        <div className="modal_footer">
-          <button
-            onClick={() => close(false)}
-            className="btn btn-secondary mt-3"
-          >
-            Regresar
-          </button>
         </div>
       </div>
     </div>
