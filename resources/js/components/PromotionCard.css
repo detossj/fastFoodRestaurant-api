@@ -1,16 +1,17 @@
 .promotion-card {
     width: 100%;
-    max-width: 100%;
+    height: 100%;
+    display: flex;
     flex-direction: column;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .promotion-img-wrapper {
-    height: 500px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 15px;
 }
-  
+
 .promotion-img {
     width: 100%;
     height: 100%;
