@@ -14,10 +14,10 @@ class PromotionSeeder extends Seeder
     {
         $promotions = [
             [
-                'name' => 'Promo Pizza Familiar',
+                'name' => 'Promo Pizza Napolitana',
                 'description' => 'Pizza Napolitana + palitos de queso + bebida',
                 'price' => 12900,
-                'image_url' => '/promo-pizza-familiar.webp',
+                'image_url' => '/promo-pizza-napolitana.webp',
                 'start_date' => Carbon::now(),
                 'end_date' => Carbon::now()->addMonth(),
                 'available' => true,
@@ -38,6 +38,32 @@ class PromotionSeeder extends Seeder
                 'items' => [
                     ['Hamburguesa Doble', 1],
                     ['Papas Fritas', 1],
+                    ['Coca-Cola 350ml', 1],
+                ],
+            ],
+            [
+                'name' => 'Promo Pizza Familiar',
+                'description' => 'Pizza Pepperoni + bebida',
+                'price' => 9900,
+                'image_url' => '/promo-pizza-pepperoni.webp',
+                'start_date' => Carbon::now(),
+                'end_date' => Carbon::now()->addMonth(),
+                'available' => true,
+                'items' => [
+                    ['Pizza Pepperoni', 1],
+                    ['Coca-Cola 350ml', 1],
+                ],
+            ],
+            [
+                'name' => 'Promo Pizza Duo',
+                'description' => 'Pizza Pepperoni + Pizza Napolitana + bebida',
+                'price' => 16900,
+                'image_url' => '/promo-pizza-duo.webp',
+                'start_date' => Carbon::now(),
+                'end_date' => Carbon::now()->addMonth(),
+                'available' => true,
+                'items' => [
+                    ['Pizza Pepperoni', 1],
                     ['Coca-Cola 350ml', 1],
                 ],
             ],
