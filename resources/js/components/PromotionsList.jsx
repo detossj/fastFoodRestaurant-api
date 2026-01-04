@@ -25,15 +25,16 @@ const PromotionsList = () => {
         </div>
 
         <div className="container p-5" style={{ minHeight: "100vh" }}>
-          <div className="d-flex flex-column gap-4">
+          <div className="row g-4">
             {promotions.map(promotion => (
-                <PromotionCard key={promotion.id} promotion={promotion} />
+              <div className="col-12 col-lg-6" key={promotion.id}>
+                <PromotionCard promotion={promotion} />
+              </div>
             ))}
           </div>
         </div>
-      
-      </>
-      
+
+      </>      
         
     );
 }
