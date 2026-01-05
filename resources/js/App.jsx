@@ -23,6 +23,7 @@ import ProtectedRoutes from './pageAuth/ProtectedRoutes';
 import { AuthProvider } from './context/AuthContext';
 import Pedidos from './pages/Pedidos';
 import Perfil from './pages/Perfil';
+import { CartProvider } from './context/CartContext';
 
 
 const App = () => {
@@ -71,9 +72,11 @@ if (document.getElementById('root')) {
     Index.render(
       <AuthProvider>
         <ProductsProvider>
-          <React.StrictMode>
-            <App/>
-          </React.StrictMode>
+          <CartProvider>
+            <React.StrictMode>
+              <App/>
+            </React.StrictMode>
+          </CartProvider>
         </ProductsProvider>
       </AuthProvider>
     )
