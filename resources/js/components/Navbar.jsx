@@ -4,6 +4,7 @@ import './NavBar.css';
 import logo from '../../assets/images/logo.webp';
 import { FaCartShopping } from "react-icons/fa6";
 import Cart from './Cart';
+import { useCart } from '../context/CartContext';
 
 
 const Navbar = () => {
@@ -26,6 +27,7 @@ const Navbar = () => {
     setCart(true);
   };
 
+  const { totalItems } = useCart()
 
   return (
     <div className="p-3 navbar-wrapper" style={{borderBottom: "1px solid #e5e5e5"}}>
@@ -136,7 +138,7 @@ const Navbar = () => {
 
               <button className="cart-button ms-auto" onClick={(e)=>showCart(e)}>
                 <FaCartShopping size={22} />
-                <span className="cart-count">0</span>
+                <span className="cart-count">{totalItems}</span>
               </button>
               
             </div>
