@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import './ProductModal.css'
+import { useCart } from '../context/CartContext'
 
 const ProductModal = ({ product, close }) => {
   const [quantity, setQuantity] = useState(1)
+
+  const { addToCart } = useCart()
 
   return (
     <div className="modal_bg">
@@ -47,7 +50,7 @@ const ProductModal = ({ product, close }) => {
             </button>
           </div>
 
-          <button className="add-cart-btn">
+          <button className="add-cart-btn" onClick={() => addToCart(product)}>
             AGREGAR <span className="price">{product.price}</span>
           </button>
 
