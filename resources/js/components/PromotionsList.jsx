@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LoadingBar from './LoadingBar';
 import PromotionCard from './PromotionCard';
 import { useProducts } from '../context/ProductsContext';
+import PromotionModal from './PromotionModal';
 
 const PromotionsList = () => {
     const { promotions, loading } = useProducts();
+    const [modal, setModal] = useState(false)
+    const [datamodal, setDataModal] = useState([])
 
     if (loading) return <LoadingBar />;
+
+    const showModal = (e, product) => {
+      e.preventDefault();
+      setDataModal(product);
+      setModal(true);
+    }
 
     return (
       <>
@@ -28,9 +37,12 @@ const PromotionsList = () => {
           <div className="row g-4">
             {promotions.map(promotion => (
               <div className="col-12 col-lg-6" key={promotion.id}>
-                <PromotionCard promotion={promotion} />
+                <PromotionCard key={promotion.id} promotion={promotion} onClick={(e)=>showModal(e,promotion)} />
               </div>
             ))}
+            {
+              modal && <PromotionModal promotion={datamodal} close={setModal}/>
+            }
           </div>
         </div>
 
