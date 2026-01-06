@@ -2,9 +2,9 @@ import React from 'react'
 import './PromotionCard.css';
 import Config from '../Config'
 
-const PromotionCard = ({ promotion }) => {
+const PromotionCard = ({ promotion, onClick }) => {
   return (
-    <div className="promotion-card shadow rounded p-3 h-100">
+    <div className="promotion-card shadow rounded p-3 h-100" onClick={onClick}>
 
       <div className="promotion-img-wrapper mb-3">
         <img 
