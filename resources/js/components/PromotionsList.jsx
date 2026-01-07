@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-import LoadingBar from './LoadingBar';
 import PromotionCard from './PromotionCard';
 import { useProducts } from '../context/ProductsContext';
 import PromotionModal from './PromotionModal';
 
 const PromotionsList = () => {
-    const { promotions, loading } = useProducts();
+    const { promotions } = useProducts();
     const [modal, setModal] = useState(false)
     const [datamodal, setDataModal] = useState([])
-
-    if (loading) return <LoadingBar />;
 
     const showModal = (e, product) => {
       e.preventDefault();
