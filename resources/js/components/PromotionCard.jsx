@@ -4,7 +4,7 @@ import Config from '../Config'
 
 const PromotionCard = ({ promotion, onClick }) => {
   return (
-    <div className="promotion-card shadow rounded p-3 h-100" onClick={onClick}>
+    <div className="promotion-card shadow rounded p-3 h-100">
 
       <div className="promotion-img-wrapper mb-3">
         <img 
@@ -24,7 +24,7 @@ const PromotionCard = ({ promotion, onClick }) => {
         </p>
       </div>
 
-      <div className="product-bottom">
+      <div className="product-bottom"  onClick={onClick}>
         <button className="add-cart-btn-card">
           AGREGAR <span className="price">{promotion.price}</span>
         </button>
