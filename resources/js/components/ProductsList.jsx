@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { useProducts } from "../context/ProductsContext";
 import ProductCard from "./ProductCard";
-import LoadingBar from "./LoadingBar";
 import ProductModal from './ProductModal';
 
 const ProductsList = ({ id }) => {
-  const { products, loading } = useProducts();
+  const { products } = useProducts();
   const [modal, setModal] = useState(false)
   const [datamodal, setDataModal] = useState([])
-
-  if (loading) return <LoadingBar />;
 
   const filtered = products.filter(p => p.category_id === id);
 
