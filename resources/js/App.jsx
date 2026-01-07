@@ -24,6 +24,9 @@ import { AuthProvider } from './context/AuthContext';
 import Pedidos from './pages/Pedidos';
 import Perfil from './pages/Perfil';
 import { CartProvider } from './context/CartContext';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 const App = () => {
@@ -74,7 +77,19 @@ if (document.getElementById('root')) {
         <ProductsProvider>
           <CartProvider>
             <React.StrictMode>
+
               <App/>
+              
+              <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                pauseOnHover
+                theme="colored"
+              />
+              
             </React.StrictMode>
           </CartProvider>
         </ProductsProvider>
