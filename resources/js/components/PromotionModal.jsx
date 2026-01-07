@@ -1,11 +1,21 @@
 import React, { useState } from 'react'
 import './PromotionModal.css'
 import { useCart } from '../context/CartContext'
+import { toast } from 'react-toastify'
 
 const PromotionModal = ({ promotion, close }) => {
   const [quantity, setQuantity] = useState(1)
 
   const { addToCart } = useCart()
+
+  const handleAddToCart = () => {
+    addToCart(promotion, quantity) 
+    toast.success("Promoción agregada al carrito")
+    
+    setTimeout(() => {
+      close(false)
+    },500);
+  }
 
   return (
     <div className="modal_bg">
@@ -50,7 +60,7 @@ const PromotionModal = ({ promotion, close }) => {
             </button>
           </div>
 
-          <button className="add-cart-btn" onClick={() => addToCart(promotion)}>
+          <button className="add-cart-btn" onClick={handleAddToCart}>
             AGREGAR <span className="price">{promotion.price}</span>
           </button>
 
