@@ -8,7 +8,7 @@ const ProductCard = ({ product, onClick }) => {
 
       <div className="product-img-wrapper mb-3">
         <img 
-          src={`${Config.API_BASE_URL}/storage/products${product.image_url}`}
+          src={`${Config.API_BASE_URL}/storage${product.image_url}`}
           alt={product.name}
           className="product-img"
           loading='lazy'
