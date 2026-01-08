@@ -32,7 +32,7 @@ const PromotionModal = ({ promotion, close }) => {
 
         <div className="modal_body">
           <img
-            src={`storage/promotions/${promotion.image_url}`}
+            src={`storage/${promotion.image_url}`}
             alt={promotion.name}
             className="promotion-modal-img"
           />
