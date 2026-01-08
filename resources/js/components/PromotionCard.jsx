@@ -8,7 +8,7 @@ const PromotionCard = ({ promotion, onClick }) => {
 
       <div className="promotion-img-wrapper mb-3">
         <img 
-          src={`${Config.API_BASE_URL}/storage/promotions${promotion.image_url}`}
+          src={`${Config.API_BASE_URL}/storage${promotion.image_url}`}
           alt={promotion.name}
           className="promotion-img"
           loading='lazy'
