@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use Str;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
 {
@@ -95,7 +96,7 @@ class ProductSeeder extends Seeder
                     'name'        => $name,
                     'description' => $description,
                     'price'       => $price,
-                    'image_url'   => '/' . \Str::slug($name) . '.webp',
+                    'image_url'   => '/products/' . Str::slug($name) . '.webp',
                     'available'   => true,
                 ]);
             }
