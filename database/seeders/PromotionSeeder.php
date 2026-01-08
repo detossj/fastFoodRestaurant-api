@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Promotion;
-use App\Models\Product;
-use App\Models\PromotionItem;
 use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\Promotion;
+use Illuminate\Support\Str;
+use App\Models\PromotionItem;
+use Illuminate\Database\Seeder;
 
 class PromotionSeeder extends Seeder
 {
@@ -17,7 +18,6 @@ class PromotionSeeder extends Seeder
                 'name' => 'Promo Pizza Napolitana',
                 'description' => 'Pizza Napolitana + palitos de queso + bebida',
                 'price' => 12900,
-                'image_url' => '/promo-pizza-napolitana.webp',
                 'start_date' => Carbon::now(),
                 'end_date' => Carbon::now()->addMonth(),
                 'available' => true,
@@ -31,7 +31,6 @@ class PromotionSeeder extends Seeder
                 'name' => 'Promo Hamburguesa Doble',
                 'description' => 'Hamburguesa doble + papas + bebida',
                 'price' => 8900,
-                'image_url' => '/promo-hamburguesa-doble.webp',
                 'start_date' => Carbon::now(),
                 'end_date' => Carbon::now()->addWeeks(3),
                 'available' => true,
@@ -42,10 +41,9 @@ class PromotionSeeder extends Seeder
                 ],
             ],
             [
-                'name' => 'Promo Pizza Familiar',
+                'name' => 'Promo Pizza Pepperoni',
                 'description' => 'Pizza Pepperoni + bebida',
                 'price' => 9900,
-                'image_url' => '/promo-pizza-pepperoni.webp',
                 'start_date' => Carbon::now(),
                 'end_date' => Carbon::now()->addMonth(),
                 'available' => true,
@@ -58,7 +56,6 @@ class PromotionSeeder extends Seeder
                 'name' => 'Promo Pizza Duo',
                 'description' => 'Pizza Pepperoni + Pizza Napolitana + bebida',
                 'price' => 16900,
-                'image_url' => '/promo-pizza-duo.webp',
                 'start_date' => Carbon::now(),
                 'end_date' => Carbon::now()->addMonth(),
                 'available' => true,
@@ -75,13 +72,14 @@ class PromotionSeeder extends Seeder
                 ['name' => $promoData['name']],
                 [
                     'description' => $promoData['description'],
-                    'price' => $promoData['price'],
-                    'image_url' => $promoData['image_url'],
-                    'start_date' => $promoData['start_date'],
-                    'end_date' => $promoData['end_date'],
-                    'available' => $promoData['available'],
+                    'price'       => $promoData['price'],
+                    'image_url'   => '/promotions/' . Str::slug($promoData['name']) . '.webp',
+                    'start_date'  => $promoData['start_date'],
+                    'end_date'    => $promoData['end_date'],
+                    'available'   => $promoData['available'],
                 ]
             );
+            
 
    
             foreach ($promoData['items'] as [$productName, $quantity]) {
