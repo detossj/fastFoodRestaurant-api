@@ -32,7 +32,7 @@ const ProductModal = ({ product, close }) => {
 
         <div className="modal_body">
           <img
-            src={`storage/products/${product.image_url}`}
+            src={`storage/${product.image_url}`}
             alt={product.name}
             className="product-modal-img"
           />
