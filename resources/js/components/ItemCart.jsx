@@ -9,7 +9,7 @@ const ItemCart = ({ product, onIncrease, onDecrease }) => {
     <div className="item-cart">
 
       <img
-        src={`${Config.API_BASE_URL}/storage/products${image_url}`}
+        src={`${Config.API_BASE_URL}/storage${image_url}`}
         alt={name}
         className="item-cart-img"
       />
