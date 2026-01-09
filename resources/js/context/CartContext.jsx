@@ -53,6 +53,10 @@ export const CartProvider = ({ children }) => {
         ))
     }
 
+    const removeItem = (id) => {
+        setCart(cart => cart.filter(item => item.id !== id));
+    };
+
     const total = cart.reduce(
         (acc, p) => acc + p.price * p.quantity,
         0
@@ -70,6 +74,7 @@ export const CartProvider = ({ children }) => {
         increaseQty,
         decreaseQty,
         clearCart,
+        removeItem,
         total,
         totalItems
         }}>
