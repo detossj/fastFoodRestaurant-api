@@ -5,7 +5,7 @@ import { useCart } from '../context/CartContext'
 
 const Cart = ({ onClose }) => {
 
-  const { cart, increaseQty, decreaseQty, total} = useCart()
+  const { cart, increaseQty, decreaseQty, removeItem, total} = useCart()
 
   return (
     <div className="cart-overlay" onClick={onClose}>
@@ -30,6 +30,7 @@ const Cart = ({ onClose }) => {
               product={product}
               onIncrease={increaseQty}
               onDecrease={decreaseQty}
+              onRemove={removeItem}
             />
           ))}
         </div>
