@@ -18,6 +18,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .item-cart-name {
@@ -33,3 +34,27 @@
 .item-cart-price {
   font-size: 18px;
 }
+
+.remove-item-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d32f2f;
+  font-size: 16px;
+  padding: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+
+.remove-item-btn:hover {
+  color: #b71c1c;
+  transform: scale(1.1);
+}
+
+.remove-item-btn i {
+  pointer-events: none;
+}
+
