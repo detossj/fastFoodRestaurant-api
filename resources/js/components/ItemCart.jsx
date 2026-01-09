@@ -2,7 +2,7 @@ import React from 'react'
 import './ItemCart.css'
 import Config from '../Config'
 
-const ItemCart = ({ product, onIncrease, onDecrease }) => {
+const ItemCart = ({ product, onIncrease, onDecrease, onRemove }) => {
   const { id, name, price, quantity, image_url } = product
 
   return (
@@ -26,6 +26,15 @@ const ItemCart = ({ product, onIncrease, onDecrease }) => {
 
           <span className="item-cart-price">${price}</span>
         </div>
+
+        <button
+          className="remove-item-btn"
+          onClick={() => onRemove(id)}
+          aria-label="Eliminar producto"
+        >
+          <i className="fa-solid fa-trash"></i>
+        </button>
+
       </div>
 
     </div>
