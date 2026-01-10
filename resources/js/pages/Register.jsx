@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Config from '../Config'
+import { useAuth } from '../context/AuthContext'
 
 const Register = () => {
 
@@ -9,9 +10,13 @@ const Register = () => {
   const [phone, setPhone] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  const { login } = useAuth()
 
   const submitRegister = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const response = await Config.Register({
         email,
@@ -22,9 +27,13 @@ const Register = () => {
         password_confirmation: passwordConfirmation
       });
   
-      console.log("Registro exitoso:", response.data);
+      const { token, user, rol } = response.data
+
+      login(user,token,rol)
+      
     } catch (error) {
       console.error("Error en registro:", error.response?.data || error);
+      setLoading(false)
     }
   };
   
@@ -124,7 +133,7 @@ const Register = () => {
                         </div>
                         
                         <button className='btn w-100' style={{backgroundColor: 'rgb(249, 124, 47)', color: 'white'}} onClick={submitRegister}>
-                          REGISTRARSE
+                          {loading ? 'Registrando...' : 'REGISTRARSE'}
                         </button>
 
                         <div className='w-100 text-center mt-3'>
