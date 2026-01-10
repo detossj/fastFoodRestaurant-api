@@ -23,21 +23,22 @@ export const CartProvider = ({ children }) => {
       
       
 
-    const addToCart = (product) => {
+    const addToCart = (product, quantity = 1) => {
         setCart(prev => {
-        const exists = prev.find(p => p.id === product.id)
-
-        if (exists) {
+            const exists = prev.find(p => p.id === product.id)
+        
+            if (exists) {
             return prev.map(p =>
-            p.id === product.id
-                ? { ...p, quantity: p.quantity + 1 }
+                p.id === product.id
+                ? { ...p, quantity: p.quantity + quantity }
                 : p
             )
-        }
-
-        return [...prev, { ...product, quantity: 1 }]
+            }
+        
+            return [...prev, { ...product, quantity }]
         })
     }
+      
 
     const increaseQty = (id) => {
         setCart(cart.map(p =>
