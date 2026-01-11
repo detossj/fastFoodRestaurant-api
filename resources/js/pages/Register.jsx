@@ -27,9 +27,13 @@ const Register = () => {
         password_confirmation: passwordConfirmation
       });
   
-      const { token, user, rol } = response.data
+      const { token, user } = response.data
 
-      login(user,token,rol)
+      login(
+        user,
+        token,
+        user.roles[0].name
+      )
       
     } catch (error) {
       console.error("Error en registro:", error.response?.data || error);
