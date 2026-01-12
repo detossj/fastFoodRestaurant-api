@@ -24,7 +24,7 @@ const ItemCart = ({ product, onIncrease, onDecrease, onRemove }) => {
             <button className="qty-btn" onClick={() => onIncrease(id)}>+</button>
           </div>
 
-          <span className="item-cart-price">${price}</span>
+          <span className="item-cart-price">${Math.trunc(price)}</span>
         </div>
 
         <button
