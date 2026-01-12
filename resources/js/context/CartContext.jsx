@@ -21,23 +21,30 @@ export const CartProvider = ({ children }) => {
         localStorage.removeItem('cart')
     }
       
+    const addToCart = (item, quantity) => {
+        const cartId = `${item.cartType}-${item.id}`;
       
-
-    const addToCart = (product, quantity = 1) => {
         setCart(prev => {
-            const exists = prev.find(p => p.id === product.id)
-        
-            if (exists) {
-            return prev.map(p =>
-                p.id === product.id
-                ? { ...p, quantity: p.quantity + quantity }
-                : p
-            )
+          const existing = prev.find(i => i.cartId === cartId);
+      
+          if (existing) {
+            return prev.map(i =>
+              i.cartId === cartId
+                ? { ...i, quantity: i.quantity + quantity }
+                : i
+            );
+          }
+      
+          return [
+            ...prev,
+            {
+              ...item,
+              cartId,
+              quantity
             }
-        
-            return [...prev, { ...product, quantity }]
-        })
-    }
+          ];
+        });
+    };
       
 
     const increaseQty = (id) => {
