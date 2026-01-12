@@ -26,7 +26,7 @@ const PromotionCard = ({ promotion, onClick }) => {
 
       <div className="product-bottom"  onClick={onClick}>
         <button className="add-cart-btn-card">
-          AGREGAR <span className="price">{promotion.price}</span>
+          AGREGAR <span className="price">${Math.trunc(promotion.price)}</span>
         </button>
       </div>
 
