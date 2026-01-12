@@ -9,7 +9,10 @@ const ProductModal = ({ product, close }) => {
   const { addToCart } = useCart()
 
   const handleAddToCart = () => {
-    addToCart(product, quantity) 
+    addToCart({
+      ...product,
+      cartType: 'product'
+    }, quantity) 
     toast.success("Producto agregado al carrito")
 
     setTimeout(() => {
