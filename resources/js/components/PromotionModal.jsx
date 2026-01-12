@@ -9,7 +9,10 @@ const PromotionModal = ({ promotion, close }) => {
   const { addToCart } = useCart()
 
   const handleAddToCart = () => {
-    addToCart(promotion, quantity) 
+    addToCart({
+      ...promotion,
+      cartType: 'promo'
+    }, quantity) 
     toast.success("Promoción agregada al carrito")
     
     setTimeout(() => {
