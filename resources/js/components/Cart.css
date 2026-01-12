@@ -31,6 +31,23 @@
   font-size: 22px;
 }
 
+.cart-pay-btn{
+  margin-top: 15px;
+  background-color: #ff7a00;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.cart-pay-btn:hover {
+  background-color: #e96f00;
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);
