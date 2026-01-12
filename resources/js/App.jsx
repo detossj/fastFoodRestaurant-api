@@ -26,6 +26,7 @@ import Perfil from './pages/Perfil';
 import { CartProvider } from './context/CartContext';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Checkout from './pages/Checkout';
 
 
 
@@ -47,6 +48,7 @@ const App = () => {
               <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}/>
             </Route>
+            <Route path='/checkout' element={<Checkout/>}/>
           </Route>
 
           <Route element={<ProtectedRoutes />}>
