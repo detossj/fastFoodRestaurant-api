@@ -61,7 +61,7 @@ const PromotionModal = ({ promotion, close }) => {
           </div>
 
           <button className="add-cart-btn" onClick={handleAddToCart}>
-            AGREGAR <span className="price">{promotion.price}</span>
+            AGREGAR <span className="price">${Math.trunc(promotion.price)}</span>
           </button>
 
         </div>
