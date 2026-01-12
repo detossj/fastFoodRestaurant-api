@@ -40,7 +40,12 @@ const Cart = ({ onClose }) => {
           <span>${total}</span>
         </div>
 
+        <button className="cart-pay-btn">
+          CONTINUAR CON EL PAGO
+        </button>
+
       </div>
+
     </div>
   )
 }
