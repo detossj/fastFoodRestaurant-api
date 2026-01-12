@@ -2,10 +2,17 @@ import React, { useState } from 'react'
 import ItemCart from './ItemCart'
 import './Cart.css'
 import { useCart } from '../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = ({ onClose }) => {
 
+  const navigate = useNavigate()
+
   const { cart, increaseQty, decreaseQty, removeItem, total} = useCart()
+
+  const navigateToCheckout = () => {
+    navigate('/checkout')
+  }
 
   return (
     <div className="cart-overlay" onClick={onClose}>
@@ -40,7 +47,7 @@ const Cart = ({ onClose }) => {
           <span>${total}</span>
         </div>
 
-        <button className="cart-pay-btn">
+        <button className="cart-pay-btn" onClick={navigateToCheckout}>
           CONTINUAR CON EL PAGO
         </button>
 
