@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PromotionController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\PromotionController;
 Route::get('/products', [ProductController::class,'allProducts']);
 Route::get('/categories', [CategoryController::class,'allCategories']);
 Route::get('/promotions', [PromotionController::class,'allPromotions']);
+Route::get('/stores', [StoreController::class,'allStores']);
 
 // Auth
 Route::post('/auth/register',[AuthController::class, 'register']);
