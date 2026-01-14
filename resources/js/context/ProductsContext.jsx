@@ -28,7 +28,6 @@ export const ProductsProvider = ({ children }) => {
       setCategories(categoriesRes?.data ?? []);
       setPromotions(promotionsRes?.data ?? []);
 
-      console.log("Promotions Response: ", promotionsRes);
     } catch (err) {
       console.error("Error cargando datos:", err);
       setProducts([]);
