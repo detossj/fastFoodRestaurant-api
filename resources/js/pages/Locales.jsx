@@ -1,8 +1,13 @@
 import React from 'react'
+import StoreSectionHeader from '../components/StoreSectionHeader'
+import StoreList from '../components/StoreList'
 
 const Locales = () => {
   return (
-    <div>Locales</div>
+    <>
+      <StoreSectionHeader/>
+      <StoreList/>
+    </>
   )
 }
 
