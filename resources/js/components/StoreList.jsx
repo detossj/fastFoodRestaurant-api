@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Config from '../Config'
+import StoreCard from './StoreCard'
 
 const StoreList = () => {
 
@@ -23,7 +24,11 @@ const StoreList = () => {
     return (
         <div className='container p-5' style={{ minHeight: '100vh'}}>
             <div className="d-flex flex-wrap gap-4 justify-content-center">
-
+                {
+                    stores.map( store => (
+                        <StoreCard key={store.id} store={store}/>
+                    ))
+                }
             </div>
         </div>
     )
