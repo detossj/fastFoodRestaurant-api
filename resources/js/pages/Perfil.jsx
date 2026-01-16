@@ -1,8 +1,13 @@
 import React from 'react'
+import ProfileSectionHeader from './ProfileSectionHeader'
+import ProfileForm from './ProfileForm'
 
 const Perfil = () => {
   return (
-    <div>Perfil</div>
+    <>
+      <ProfileSectionHeader/>
+      <ProfileForm/>
+    </>
   )
 }
 
