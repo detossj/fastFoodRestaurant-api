@@ -27,6 +27,7 @@ import { CartProvider } from './context/CartContext';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Checkout from './pages/Checkout';
+import { StoreProvider } from './context/StoreContext';
 
 
 
@@ -78,7 +79,8 @@ if (document.getElementById('root')) {
       <AuthProvider>
         <ProductsProvider>
           <CartProvider>
-            <React.StrictMode>
+            <StoreProvider>
+              <React.StrictMode>
 
               <App/>
               
@@ -93,6 +95,7 @@ if (document.getElementById('root')) {
               />
               
             </React.StrictMode>
+            </StoreProvider>
           </CartProvider>
         </ProductsProvider>
       </AuthProvider>
