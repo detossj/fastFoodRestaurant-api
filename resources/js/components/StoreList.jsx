@@ -1,25 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Config from '../Config'
+import React from 'react'
 import StoreCard from './StoreCard'
+import { useStores } from '../context/StoreContext'
 
 const StoreList = () => {
 
-    const [stores, setStores] = useState([])
-
-    const loadStores = async () => {
-        try {
-            const response = await Config.getAllStores()
-            setStores(response.data)
-            console.log(response.data)
-        } catch (error) {
-            console.error("Error:",error),
-            setStores([])
-        }
-    }
-
-    useEffect(() => {
-        loadStores();
-    },[])
+    const { stores } = useStores()
 
     return (
         <div className='container p-5' style={{ minHeight: '100vh'}}>
