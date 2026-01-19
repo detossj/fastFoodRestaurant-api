@@ -15,14 +15,14 @@ export const AuthProvider = ({ children }) => {
     const storedRol = localStorage.getItem("rol")
 
     if (storedToken && storedUser) {
-      setToken(JSON.parse(storedToken))
+      setToken(storedToken)
       setUser(JSON.parse(storedUser))
       setRol(JSON.parse(storedRol))
     }
   }, [])
 
   const login = (user, token, rol) => {
-    localStorage.setItem("token", JSON.stringify(token))
+    localStorage.setItem("token", token)
     localStorage.setItem("user", JSON.stringify(user))
     localStorage.setItem("rol", JSON.stringify(rol))
 
