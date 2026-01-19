@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -104,5 +105,36 @@ class AuthController extends Controller
 
         return response()->json($response, 200);
 
+    }
+
+    public function updateProfile(Request $request) {
+
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            'password' => 'nullable|string|confirmed|min:6',
+            'phone' => 'required|string|max:255',
+            'address' => 'required|string|max:255'
+        ]);
+
+        if (isset($validated['password'])) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+    
+        $user->update($validated);
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Perfil actualizado correctamente',
+            'user' => $user
+        ]);
     }
 }
