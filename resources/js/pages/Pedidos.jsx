@@ -1,8 +1,9 @@
 import React from 'react'
+import OrderSectionHeader from '../components/OrderSectionHeader'
 
 const Pedidos = () => {
   return (
-    <div>Pedidos</div>
+    <OrderSectionHeader/>
   )
 }
 
