@@ -1,0 +1,32 @@
+.paymet-pay-btn,
+.paymet-pay-btn-outline {
+  width: 100%;
+  height: 60px;
+  padding: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-sizing: border-box; 
+}
+
+
+.paymet-pay-btn {
+  background-color: #ff7a00;
+  color: white;
+  border: 2px solid #ff7a00;
+}
+
+
+.paymet-pay-btn-outline {
+  background-color: transparent;
+  color: #ff7a00;
+  border: 2px solid #ff7a00;
+}
+
+.paymet-pay-btn:hover {
+  background-color: #e96e00;
+}
+
+.paymet-pay-btn-outline:hover {
+  background-color: #fff2e8;
+}
