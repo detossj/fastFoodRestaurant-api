@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { MapPin, Truck } from 'lucide-react'
 import { useStores } from '../context/StoreContext';
+import './PaymentMethodCard.css';
 
 const PaymentMethodCard = ({tipoEntrega, setTipoEntrega}) => {
 
@@ -38,13 +39,13 @@ const PaymentMethodCard = ({tipoEntrega, setTipoEntrega}) => {
             
             <div className="d-flex gap-3 mb-4">
                 <button 
-                className={`btn flex-fill py-3 fw-bold ${tipoEntrega === 'delivery' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                className={`flex-fill fw-bold ${tipoEntrega === 'delivery' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
                 onClick={() => setTipoEntrega('delivery')}
                 >
                 Delivery (Envío)
                 </button>
                 <button 
-                className={`btn flex-fill py-3 fw-bold ${tipoEntrega === 'retiro' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                className={`flex-fill fw-bold ${tipoEntrega === 'retiro' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
                 onClick={() => setTipoEntrega('retiro')}
                 >
                 Retiro en Tienda
@@ -54,14 +55,10 @@ const PaymentMethodCard = ({tipoEntrega, setTipoEntrega}) => {
             {tipoEntrega === 'delivery' ? (
                 <div className="row g-3 animate__animated animate__fadeIn">
                     <div className="col-md-8">
-                        <label className="form-label text-muted small fw-bold">Calle y Número</label>
+                        <label className="form-label text-muted small fw-bold">Direccion</label>
                         <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" />
                     </div>
-                    <div className="col-md-4">
-                        <label className="form-label text-muted small fw-bold">Depto / Casa (Opcional)</label>
-                        <input type="text" className="form-control" placeholder="Ej: 4B" />
-                    </div>
-                    <div className="col-12">
+                    <div className="col-4">
                         <label className="form-label text-muted small fw-bold">Comuna</label>
                         <select className="form-select">
                             {stores.map((store) => (
@@ -82,7 +79,7 @@ const PaymentMethodCard = ({tipoEntrega, setTipoEntrega}) => {
                             </select>
                     </div>
                     {direction && (
-                        <div className="alert alert-info d-flex align-items-center gap-2 mt-3" role="alert">
+                        <div className="alert alert-info d-flex align-items-center gap-2 mt-3" role="alert" style={{backgroundColor:'#FFF6EE', borderColor:'#FFDDC1', color:'#663C00'}}>
                             <MapPin size={18} color="#ff7a00"/>
                             <div>
                                 <strong>Sucursal:</strong> {subDirection}, {direction}
