@@ -1,97 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import { MapPin, Truck } from 'lucide-react'
-import { useStores } from '../context/StoreContext';
-import './PaymentMethodCard.css';
+import React from 'react'
+import { CreditCard, Banknote } from 'lucide-react'
 
-const PaymentMethodCard = ({tipoEntrega, setTipoEntrega}) => {
-
-    const [direction, setDirection] = useState()
-    const [subDirection, setSubDirection] = useState()
-
-    const { stores } = useStores();
-
-    const handleStoreChange = (e) => {
-        const selectedId = e.target.value;
-        
-        const selectedStore = stores.find(store => store.id.toString() === selectedId);
-
-        if (selectedStore) {
-            setDirection(selectedStore.direction);
-            setSubDirection(selectedStore.sub_direction);
-        }
-    };
-
-
-    useEffect(() => {
-        if (stores && stores.length > 0 && !direction) {
-            setDirection(stores[0].direction);
-            setSubDirection(stores[0].sub_direction);
-        }
-    }, [stores]);
-
+const PaymentMethodCard = ({metodoPago, setMetodoPago}) => {
     return (
-        <div className="card shadow-sm mb-4 border-0">
-            <div className="card-body p-4">
+    <div className="card shadow-sm border-0">
+        <div className="card-body p-4">
             <h5 className="fw-bold mb-4 d-flex align-items-center gap-2">
-                <Truck size={20} color="#ff7a00" /> 
-                Método de entrega
+                <CreditCard size={20} color="#ff7a00" />
+                Método de pago
             </h5>
             
-            <div className="d-flex gap-3 mb-4">
-                <button 
-                className={`flex-fill fw-bold ${tipoEntrega === 'delivery' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
-                onClick={() => setTipoEntrega('delivery')}
-                >
-                Delivery (Envío)
-                </button>
-                <button 
-                className={`flex-fill fw-bold ${tipoEntrega === 'retiro' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
-                onClick={() => setTipoEntrega('retiro')}
-                >
-                Retiro en Tienda
-                </button>
-            </div>
-
-            {tipoEntrega === 'delivery' ? (
-                <div className="row g-3 animate__animated animate__fadeIn">
-                    <div className="col-md-8">
-                        <label className="form-label text-muted small fw-bold">Direccion</label>
-                        <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" />
-                    </div>
-                    <div className="col-4">
-                        <label className="form-label text-muted small fw-bold">Comuna</label>
-                        <select className="form-select">
-                            {stores.map((store) => (
-                                <option key={store.id}>{store.direction}</option>
-                            ))}
-                        </select>
+            <div className="d-flex flex-column gap-2">
+                <div className={`border rounded p-3 cursor-pointer d-flex align-items-center gap-3 ${metodoPago === 'tarjeta' ? 'border-primary bg-light' : ''}`} onClick={() => setMetodoPago('tarjeta')}>
+                    <input type="radio" name="pago" checked={metodoPago === 'tarjeta'} onChange={() => setMetodoPago('tarjeta')} />
+                    <CreditCard size={24} className="text-dark"/>
+                    <div>
+                        <div className="fw-bold">Tarjeta de Crédito / Débito</div>
+                        <div className="small text-muted">WebPay, OnePay</div>
                     </div>
                 </div>
-            ) : (
 
-                <>
-                    <div className="col-12">
-                            <label className="form-label text-muted small fw-bold">Comuna</label>
-                            <select className="form-select" onChange={handleStoreChange}>
-                                {stores.map((store) => (
-                                    <option key={store.id} value={store.id}>{store.direction}</option>
-                                ))}
-                            </select>
+                <div className={`border rounded p-3 cursor-pointer d-flex align-items-center gap-3 ${metodoPago === 'efectivo' ? 'border-primary bg-light' : ''}`} onClick={() => setMetodoPago('efectivo')}>
+                    <input type="radio" name="pago" checked={metodoPago === 'efectivo'} onChange={() => setMetodoPago('efectivo')} />
+                    <Banknote size={24} className="text-success"/>
+                    <div>
+                        <div className="fw-bold">Efectivo en tienda o entrega</div>
+                        <div className="small text-muted">Pagas al recibir tu pedido</div>
                     </div>
-                    {direction && (
-                        <div className="alert alert-info d-flex align-items-center gap-2 mt-3" role="alert" style={{backgroundColor:'#FFF6EE', borderColor:'#FFDDC1', color:'#663C00'}}>
-                            <MapPin size={18} color="#ff7a00"/>
-                            <div>
-                                <strong>Sucursal:</strong> {subDirection}, {direction}
-                                <div className="small">Tu pedido estará listo en 20-30 minutos.</div>
-                            </div>
-                        </div>
-                    )}
-                </>
-            )}
+                </div>
             </div>
+
         </div>
-    )
+    </div>
+
+  )
 }
 
 export default PaymentMethodCard
