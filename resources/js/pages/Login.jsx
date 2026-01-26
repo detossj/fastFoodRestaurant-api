@@ -57,7 +57,7 @@ const Login = () => {
             <form onSubmit={submitLogin}>
 
               <div className='mb-3'>
-                <label className='form-label'>
+                <label className='form-label text-muted small fw-bold'>
                   Correo
                 </label>
                 <input
@@ -71,7 +71,7 @@ const Login = () => {
               </div>
 
               <div className='mb-4'>
-                <label className='form-label'>
+                <label className='form-label text-muted small fw-bold'>
                   Contraseña
                 </label>
                 <input
