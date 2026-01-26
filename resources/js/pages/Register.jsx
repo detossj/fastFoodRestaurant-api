@@ -53,7 +53,7 @@ const Register = () => {
                         </h2> 
                         
                         <div className="w-100 mb-3"> 
-                            <label className='form-label w-100 text-start'>
+                            <label className='form-label text-muted small fw-bold'>
                               Correo
                             </label>
                             <input 
@@ -67,7 +67,7 @@ const Register = () => {
                         </div>
 
                         <div className="w-100 mb-3"> 
-                            <label className='form-label w-100 text-start'>
+                            <label className='form-label text-muted small fw-bold'>
                               Nombre Completo
                             </label>
                             <input 
@@ -81,7 +81,7 @@ const Register = () => {
                         </div>
 
                         <div className="w-100 mb-3"> 
-                            <label className='form-label w-100 text-start'>
+                            <label className='form-label text-muted small fw-bold'>
                               Dirección
                             </label>
                             <input 
@@ -95,7 +95,7 @@ const Register = () => {
                         </div>
 
                         <div className="w-100 mb-3"> 
-                            <label className='form-label w-100 text-start'>
+                            <label className='form-label text-muted small fw-bold'>
                               Número de Teléfono
                             </label>
                             <input 
@@ -109,7 +109,7 @@ const Register = () => {
                         </div>
                         
                         <div className="w-100 mb-4">
-                            <label htmlFor="password-input" className='form-label w-100 text-start'>
+                            <label htmlFor="password-input" className='form-label text-muted small fw-bold'>
                               Contraseña
                             </label>
                             <input 
@@ -123,7 +123,7 @@ const Register = () => {
                         </div>
 
                         <div className="w-100 mb-4">
-                            <label htmlFor="password-input" className='form-label w-100 text-start'>
+                            <label htmlFor="password-input" className='form-label text-muted small fw-bold'>
                               Confirmar Contraseña
                             </label>
                             <input 
