@@ -28,6 +28,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Checkout from './pages/Checkout';
 import { StoreProvider } from './context/StoreContext';
+import Success from './pages/Success';
+import Error from './pages/Error';
 
 
 
@@ -50,6 +52,8 @@ const App = () => {
               <Route path='/register' element={<Register/>}/>
             </Route>
             <Route path='/checkout' element={<Checkout/>}/>
+            <Route path='/success' element={<Success/>}/>
+            <Route path='/error' element={<Error/>}/>
           </Route>
 
           <Route element={<ProtectedRoutes />}>
