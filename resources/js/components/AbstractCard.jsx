@@ -1,9 +1,12 @@
 import React from 'react'
 import { useCart } from '../context/CartContext'
 import { ShoppingBag } from 'lucide-react'
+import { useNavigate } from 'react-router-dom';
 
 
 const AbstractCard = ({costoEnvio, tipoEntrega}) => {
+
+    const navigate = useNavigate(); 
 
     const { cart, total: subtotal} = useCart()
     const total = subtotal + costoEnvio;
@@ -11,6 +14,12 @@ const AbstractCard = ({costoEnvio, tipoEntrega}) => {
     const formatMoney = (amount) => {
       return "$" + amount.toLocaleString('es-CL');
     };
+
+    const navigateToRedirection = () => {
+        navigate('/redirection');
+    };
+
+
 
   return (
     <div className="col-lg-4">
@@ -54,7 +63,7 @@ const AbstractCard = ({costoEnvio, tipoEntrega}) => {
                 <span className="fw-bold fs-4" textColor="#ff7a00">{formatMoney(total)}</span>
             </div>
 
-            <button className="cart-pay-btn" >
+            <button className="cart-pay-btn" onClick={() => navigateToRedirection()}>
                 CONFIRMAR PEDIDO
             </button>
                     
