@@ -30,6 +30,7 @@ import Checkout from './pages/Checkout';
 import { StoreProvider } from './context/StoreContext';
 import Success from './pages/Success';
 import Error from './pages/Error';
+import Redirection from './pages/Redirection';
 
 
 
@@ -54,6 +55,7 @@ const App = () => {
             <Route path='/checkout' element={<Checkout/>}/>
             <Route path='/success' element={<Success/>}/>
             <Route path='/error' element={<Error/>}/>
+            <Route path='/redirection' element={<Redirection/>}/>
           </Route>
 
           <Route element={<ProtectedRoutes />}>
