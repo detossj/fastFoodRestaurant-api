@@ -86,8 +86,7 @@ const Login = () => {
 
               <button
                 type='submit'
-                className='btn w-100'
-                style={{ backgroundColor: 'rgb(249, 124, 47)', color: 'white' }}
+                className='cart-pay-btn'
                 disabled={loading}
               >
                 {loading ? 'Ingresando...' : 'INGRESAR'}
