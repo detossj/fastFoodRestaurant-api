@@ -136,7 +136,7 @@ const Register = () => {
                             />
                         </div>
                         
-                        <button className='btn w-100' style={{backgroundColor: 'rgb(249, 124, 47)', color: 'white'}} onClick={submitRegister}>
+                        <button className='cart-pay-btn' onClick={submitRegister}>
                           {loading ? 'Registrando...' : 'REGISTRARSE'}
                         </button>
 
