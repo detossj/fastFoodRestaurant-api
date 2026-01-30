@@ -19,18 +19,22 @@ api.interceptors.request.use((config) => {
 });
 
 export default {
-    API_BASE_URL,
-  
-    // AUTH
-    Login: (data) => api.post("/auth/login", data),
-    Register: (data) => api.post("/auth/register", data),
-    updateProfile: (data) => api.patch("/auth/profile", data),
-  
-    // PUBLIC / PRIVATE
-    getAllProducts: () => api.get("/products"),
-    getAllCategories: () => api.get("/categories"),
-    getAllPromotions: () => api.get("/promotions"),
-    getAllStores: () => api.get("/stores"),
+  API_BASE_URL,
+
+  // AUTH
+  Login: (data) => api.post("/auth/login", data),
+  Register: (data) => api.post("/auth/register", data),
+  updateProfile: (data) => api.patch("/auth/profile", data),
+
+  // PUBLIC / PRIVATE
+  getAllProducts: () => api.get("/products"),
+  getAllCategories: () => api.get("/categories"),
+  getAllPromotions: () => api.get("/promotions"),
+  getAllStores: () => api.get("/stores"),
+
+  // ORDERS
+  createOrder: (data) => api.post("/orders", data),
+  getOrders: () => api.get("/orders"),
 };
   
   
