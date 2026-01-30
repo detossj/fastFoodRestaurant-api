@@ -11,8 +11,8 @@ const PaymentMethodCard = ({metodoPago, setMetodoPago}) => {
             </h5>
             
             <div className="d-flex flex-column gap-2">
-                <div className={`border rounded p-3 cursor-pointer d-flex align-items-center gap-3 ${metodoPago === 'tarjeta' ? 'border-primary bg-light' : ''}`} onClick={() => setMetodoPago('tarjeta')}>
-                    <input type="radio" name="pago" checked={metodoPago === 'tarjeta'} onChange={() => setMetodoPago('tarjeta')} />
+                <div className={`border rounded p-3 cursor-pointer d-flex align-items-center gap-3 ${metodoPago === 'debit_card' ? 'border-primary bg-light' : ''}`} onClick={() => setMetodoPago('tarjeta')}>
+                    <input type="radio" name="pago" checked={metodoPago === 'debit_card'} onChange={() => setMetodoPago('debit_card')} />
                     <CreditCard size={24} className="text-dark"/>
                     <div>
                         <div className="fw-bold">Tarjeta de Crédito / Débito</div>
@@ -20,8 +20,8 @@ const PaymentMethodCard = ({metodoPago, setMetodoPago}) => {
                     </div>
                 </div>
 
-                <div className={`border rounded p-3 cursor-pointer d-flex align-items-center gap-3 ${metodoPago === 'efectivo' ? 'border-primary bg-light' : ''}`} onClick={() => setMetodoPago('efectivo')}>
-                    <input type="radio" name="pago" checked={metodoPago === 'efectivo'} onChange={() => setMetodoPago('efectivo')} />
+                <div className={`border rounded p-3 cursor-pointer d-flex align-items-center gap-3 ${metodoPago === 'cash' ? 'border-primary bg-light' : ''}`} onClick={() => setMetodoPago('efectivo')}>
+                    <input type="radio" name="pago" checked={metodoPago === 'cash'} onChange={() => setMetodoPago('cash')} />
                     <Banknote size={24} className="text-success"/>
                     <div>
                         <div className="fw-bold">Efectivo en tienda o entrega</div>
