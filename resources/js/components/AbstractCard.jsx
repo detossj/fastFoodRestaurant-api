@@ -4,7 +4,7 @@ import { ShoppingBag } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 
 
-const AbstractCard = ({costoEnvio, tipoEntrega}) => {
+const AbstractCard = ({costoEnvio, tipoEntrega, onConfirm}) => {
 
     const navigate = useNavigate(); 
 
@@ -16,6 +16,7 @@ const AbstractCard = ({costoEnvio, tipoEntrega}) => {
     };
 
     const navigateToRedirection = () => {
+        onConfirm();
         navigate('/redirection');
     };
 
