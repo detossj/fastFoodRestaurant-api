@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -25,6 +26,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::post('/auth/logout',[AuthController::class, 'logout']);
     Route::patch('/auth/profile',[AuthController::class, 'updateProfile']);
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::get('/orders', [OrderController::class, 'index']);
     
 });
 
