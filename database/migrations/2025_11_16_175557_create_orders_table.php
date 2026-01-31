@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+        
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('cart_id')->constrained()->onDelete('cascade');
-            $table->enum('status',['pending','preparing','delivering','completed','cancelled'])->default('pending');
-            $table->decimal('total',10,2);
-            $table->enum('payment_method', ['cash', 'credit_card', 'debit_card', 'transfer']);
+            $table->enum('status', ['Pendiente','Preparando','En camino','Completado',])->default('Preparando');
+            $table->enum('delivery_type', ['Retiro','Delivery']);
+            $table->decimal('subtotal', 10, 2)->default(0);
+            $table->decimal('shipping_cost', 10, 2)->default(0);
+            $table->decimal('total', 10, 2);
+            $table->enum('payment_method', ['Efectivo','Tarjeta Debito']);
             $table->timestamps();
         });
+        
     }
 
     /**
