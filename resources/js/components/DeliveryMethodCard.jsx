@@ -39,20 +39,20 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega}) => {
                 
                 <div className="d-flex gap-3 mb-4">
                     <button 
-                    className={`flex-fill fw-bold ${tipoEntrega === 'delivery' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
-                    onClick={() => setTipoEntrega('delivery')}
+                    className={`flex-fill fw-bold ${tipoEntrega === 'Delivery' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
+                    onClick={() => setTipoEntrega('Delivery')}
                     >
                     Delivery (Envío)
                     </button>
                     <button 
-                    className={`flex-fill fw-bold ${tipoEntrega === 'retiro' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
-                    onClick={() => setTipoEntrega('retiro')}
+                    className={`flex-fill fw-bold ${tipoEntrega === 'Retiro' ? 'paymet-pay-btn' : 'paymet-pay-btn-outline'}`}
+                    onClick={() => setTipoEntrega('Retiro')}
                     >
                     Retiro en Tienda
                     </button>
                 </div>
 
-                {tipoEntrega === 'delivery' ? (
+                {tipoEntrega === 'Delivery' ? (
                     <div className="row g-3 animate__animated animate__fadeIn">
                         <div className="col-md-8">
                             <label className="form-label text-muted small fw-bold">Direccion</label>
