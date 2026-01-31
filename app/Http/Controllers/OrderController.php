@@ -16,9 +16,12 @@ class OrderController extends Controller
     {
         // 1. Validar la entrada
         $request->validate([
-            'payment_method' => 'required|in:cash,credit_card,debit_card,transfer',
+            'payment_method' => 'required|in:Efectivo,Tarjeta Debito',
+            'delivery_type' => 'required|in:Retiro,Delivery',
             'items' => 'required|array',
             'total' => 'required|numeric',
+            'subtotal' => 'required|numeric',
+            'shipping_cost' => 'required|numeric',
         ]);
 
         try {
@@ -36,10 +39,14 @@ class OrderController extends Controller
                 $order = Order::create([
                     'user_id' => $user->id,
                     'cart_id' => $cart->id,
-                    'status' => 'pending',
+                    'status' => 'Pendiente',
+                    'delivery_type' => $request->delivery_type,
+                    'subtotal' => $request->subtotal,
+                    'shipping_cost' => $request->shipping_cost,
                     'total' => $request->total,
                     'payment_method' => $request->payment_method,
                 ]);
+                
 
                 // 4. Separar y guardar Items y Promociones
                 foreach ($request->items as $item) {
