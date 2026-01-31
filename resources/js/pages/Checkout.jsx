@@ -14,16 +14,19 @@ const Checkout = () => {
   const navigate = useNavigate();
   const { cart, total: subtotal, clearCart } = useCart();
   
-  const [tipoEntrega, setTipoEntrega] = useState('delivery'); 
-  const [metodoPago, setMetodoPago] = useState('debit_card'); 
+  const [tipoEntrega, setTipoEntrega] = useState('Delivery'); 
+  const [metodoPago, setMetodoPago] = useState('Tarjeta Debito'); 
 
-  const costoEnvio = tipoEntrega === 'delivery' ? 2000 : 0;
+  const costoEnvio = tipoEntrega === 'Delivery' ? 2000 : 0;
   const totalFinal = subtotal + costoEnvio;
 
   const handleConfirmOrder = async () => {
     const orderData = {
       payment_method: metodoPago, 
       total: totalFinal,
+      subtotal: subtotal,
+      shipping_cost: costoEnvio,
+      delivery_type: tipoEntrega,
       // Mapeamos el carrito para que Laravel entienda qué es producto y qué promoción
       items: cart.map(item => ({
         id: item.id,
