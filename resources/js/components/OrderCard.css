@@ -1,0 +1,41 @@
+.order-card {
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-header {
+    text-align: center;
+}
+  
+.order-status {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background-color: #ffedd5;
+    color: #c2410c;
+    font-weight: bold;
+}
+  
+.order-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.order-footer {
+    text-align: center;
+}
+
+.order-footer h5 {
+    margin-top: 10px;
+    color: #111827;
+}
+  
