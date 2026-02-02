@@ -51,7 +51,7 @@ class OrderController extends Controller
                 // 4. Separar y guardar Items y Promociones
                 foreach ($request->items as $item) {
                     // Si el item es una promoción 
-                    if (isset($item['cartType']) && $item['cartType'] === 'promotion') {
+                    if (isset($item['cartType']) && $item['cartType'] === 'promo') {
                         OrderPromotionItem::create([
                             'order_id'     => $order->id,
                             'promotion_id' => $item['id'],
