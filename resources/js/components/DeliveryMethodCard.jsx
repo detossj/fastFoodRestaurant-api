@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { MapPin, Truck } from 'lucide-react'
 import { useStores } from '../context/StoreContext';
 import './DeliveryMethodCard.css';
+import { useAuth } from '../context/AuthContext';
 
 const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega}) => {
+
+    const { token } = useAuth()
+    const isLogged = !!token
 
     const [direction, setDirection] = useState()
     const [subDirection, setSubDirection] = useState()
@@ -53,7 +57,7 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega}) => {
                 </div>
 
                 {tipoEntrega === 'Delivery' ? (
-                    <div className="row g-3 animate__animated animate__fadeIn">
+                    !isLogged ? ( <div className="row g-3 animate__animated animate__fadeIn">
                         <div className="col-md-8">
                             <label className="form-label text-muted small fw-bold">Direccion</label>
                             <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" />
@@ -67,7 +71,8 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega}) => {
                             </select>
                         </div>
                     </div>
-                ) : (
+                ) :(<></>) 
+            ): (
 
                     <>
                         <div className="col-12">
