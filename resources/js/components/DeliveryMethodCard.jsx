@@ -4,9 +4,9 @@ import { useStores } from '../context/StoreContext';
 import './DeliveryMethodCard.css';
 import { useAuth } from '../context/AuthContext';
 
-const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega}) => {
+const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega, setDeliveryAddress}) => {
 
-    const { token } = useAuth()
+    const { token, user } = useAuth()
     const isLogged = !!token
 
     const [direction, setDirection] = useState()
@@ -14,25 +14,22 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega}) => {
 
     const { stores } = useStores();
 
-    const handleStoreChange = (e) => {
-        const selectedId = e.target.value;
-        
-        const selectedStore = stores.find(store => store.id.toString() === selectedId);
+    useEffect(() => {
+        if (tipoEntrega === 'Delivery') {
+            setDeliveryAddress(user?.address || 'Dirección no especificada');
+        } else if (tipoEntrega === 'Retiro' && direction) {
+            setDeliveryAddress(`${subDirection}, ${direction}`);
+        }
+    }, [tipoEntrega, direction, subDirection, user]);
 
+    const handleStoreChange = (e) => {
+        const selectedStore = stores.find(s => s.id.toString() === e.target.value);
         if (selectedStore) {
             setDirection(selectedStore.direction);
             setSubDirection(selectedStore.sub_direction);
         }
     };
-
-
-    useEffect(() => {
-        if (stores && stores.length > 0 && !direction) {
-            setDirection(stores[0].direction);
-            setSubDirection(stores[0].sub_direction);
-        }
-    }, [stores]);
-
+    
     return (
         <div className="card shadow-sm mb-4 border-0">
             <div className="card-body p-4">
@@ -60,7 +57,7 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega}) => {
                     !isLogged ? ( <div className="row g-3 animate__animated animate__fadeIn">
                         <div className="col-md-8">
                             <label className="form-label text-muted small fw-bold">Direccion</label>
-                            <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" />
+                            <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" onChange={(e) => setDeliveryAddress(e.target.value)} />
                         </div>
                         <div className="col-4">
                             <label className="form-label text-muted small fw-bold">Comuna</label>
