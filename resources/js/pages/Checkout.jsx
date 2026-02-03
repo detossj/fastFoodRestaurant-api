@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext' // Importante
 import CheckoutTopBar from '../components/CheckoutTopBar'
@@ -7,15 +7,25 @@ import CustomerDataCard from '../components/CustomerDataCard';
 import DeliveryMethodCard from '../components/DeliveryMethodCard';
 import PaymentMethodCard from '../components/PaymentMethodCard';
 import Config from '../Config';
+import { useAuth } from '../context/AuthContext';
 
 
 
 const Checkout = () => {
   const navigate = useNavigate();
   const { cart, total: subtotal, clearCart } = useCart();
+  const { user } = useAuth()
   
   const [tipoEntrega, setTipoEntrega] = useState('Delivery'); 
   const [metodoPago, setMetodoPago] = useState('Tarjeta Debito'); 
+
+  const [deliveryAddress, setDeliveryAddress] = useState('');
+
+  useEffect(() => {
+      if (tipoEntrega === 'Delivery' && user?.address) {
+          setDeliveryAddress(user.address);
+      }
+  }, [user]);
 
   const costoEnvio = tipoEntrega === 'Delivery' ? 2000 : 0;
   const totalFinal = subtotal + costoEnvio;
@@ -27,6 +37,7 @@ const Checkout = () => {
       subtotal: subtotal,
       shipping_cost: costoEnvio,
       delivery_type: tipoEntrega,
+      delivery_address: deliveryAddress,
       // Mapeamos el carrito para que Laravel entienda qué es producto y qué promoción
       items: cart.map(item => ({
         id: item.id,
@@ -54,7 +65,7 @@ const Checkout = () => {
       <div className="container py-5">
         <div className="row g-4">
           <div className="col-lg-8">
-            <DeliveryMethodCard tipoEntrega={tipoEntrega} setTipoEntrega={setTipoEntrega}/>
+            <DeliveryMethodCard tipoEntrega={tipoEntrega} setTipoEntrega={setTipoEntrega} setDeliveryAddress={setDeliveryAddress}/>
             <CustomerDataCard />
             <PaymentMethodCard metodoPago={metodoPago} setMetodoPago={setMetodoPago}/>
           </div>
