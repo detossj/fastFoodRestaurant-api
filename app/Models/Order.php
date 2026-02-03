@@ -10,8 +10,12 @@ class Order extends Model
         'user_id',
         'cart_id',
         'status',
+        'delivery_type',
+        'subtotal',
+        'shipping_cost',
         'total',
-        'payment_method'
+        'payment_method',
+        'delivery_address',
     ];
 
     public function user() {
