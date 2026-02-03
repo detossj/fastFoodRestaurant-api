@@ -22,6 +22,7 @@ class OrderController extends Controller
             'total' => 'required|numeric',
             'subtotal' => 'required|numeric',
             'shipping_cost' => 'required|numeric',
+            'delivery_address' => 'required|string|max:255'
         ]);
 
         try {
@@ -45,6 +46,7 @@ class OrderController extends Controller
                     'shipping_cost' => $request->shipping_cost,
                     'total' => $request->total,
                     'payment_method' => $request->payment_method,
+                    'delivery_address' => $request->delivery_address,
                 ]);
                 
 
