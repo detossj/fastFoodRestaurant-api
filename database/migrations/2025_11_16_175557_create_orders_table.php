@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('shipping_cost', 10, 2)->default(0);
             $table->decimal('total', 10, 2);
             $table->enum('payment_method', ['Efectivo','Tarjeta Debito']);
+            $table->string('delivery_address');
             $table->timestamps();
         });
         
