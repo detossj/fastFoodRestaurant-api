@@ -14,7 +14,9 @@ import { useAuth } from '../context/AuthContext';
 const Checkout = () => {
   const navigate = useNavigate();
   const { cart, total: subtotal, clearCart } = useCart();
-  const { user } = useAuth()
+  const { user, token } = useAuth()
+
+  const isLoggedIn = !!token;
   
   const [tipoEntrega, setTipoEntrega] = useState('Delivery'); 
   const [metodoPago, setMetodoPago] = useState('Tarjeta Debito'); 
@@ -48,10 +50,16 @@ const Checkout = () => {
     };
 
     try {
-      const response = await Config.createOrder(orderData);
-      if (response.status === 201 || response.status === 200) {
+      if(!isLoggedIn) {
         clearCart();
         navigate('/redirection'); 
+      } 
+      else {
+        const response = await Config.createOrder(orderData);
+        if (response.status === 201 || response.status === 200) {
+          clearCart();
+          navigate('/redirection'); 
+        }
       }
     } catch (error) {
       console.error("Error al crear pedido:", error.response?.data);
