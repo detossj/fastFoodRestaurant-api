@@ -1,41 +1,104 @@
-.order-card {
+.order-card-v2 {
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 24px;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+}
+
+
+.order-v2-header {
+    padding: 30px;
     background: #ffffff;
-    border-radius: 16px;
-    padding: 20px;
+    border-bottom: 2px dashed #f1f5f9;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-v2-id-group h2 {
+    margin: 0;
+    font-weight: 800;
+    color: #1e293b;
+    font-size: 1.8rem;
+}
+
+.order-v2-date {
+    color: #94a3b8;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.order-v2-status-pill {
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.order-v2-section {
+    padding: 30px;
+}
+
+.order-v2-title {
+    font-size: 1.2rem;
+    color: #475569;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.order-v2-products-list {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+}
+
+.order-v2-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+    padding: 30px;
+    background: #f8fafc;
 }
 
-.order-header {
-    text-align: center;
+.info-block label {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
-  
-.order-status {
-    display: inline-block;
-    margin-top: 5px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background-color: #ffedd5;
-    color: #c2410c;
-    font-weight: bold;
+
+.order-v2-footer {
+    padding: 30px;
+    background: #fff;
+    border-top: 1px solid #f1f5f9;
 }
-  
-.order-products {
+
+.footer-line {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    color: #64748b;
 }
 
-.order-footer {
-    text-align: center;
+.total-big {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #f1f5f9;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1e293b;
 }
 
-.order-footer h5 {
-    margin-top: 10px;
-    color: #111827;
+.total-big span:last-child {
+    color: #ff7a00; 
 }
-  
+
+.preparando { background: #e0f2fe; color: #0369a1; }
+.completado { background: #dcfce7; color: #15803d; }
+.en-camino { background: #fef3c7; color: #b45309; }
