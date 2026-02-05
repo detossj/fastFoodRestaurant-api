@@ -48,16 +48,7 @@ const CustomerDataCard = () => {
               disabled={ isLogged }
             />
           </div>
-          <div className="col-md-6">
-            <label className="form-label text-muted small fw-bold">Dirección</label>
-            <input 
-              type="tel" 
-              className="form-control" 
-              placeholder="+56 9 1234 5678"
-              defaultValue={ isLogged ? `${user.address}` : '' }
-              disabled={ isLogged }
-            />
-          </div>
+
         </div>
 
         { !isLogged && ( 
