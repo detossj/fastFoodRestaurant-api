@@ -6,9 +6,7 @@ import { useAuth } from '../context/AuthContext';
 
 const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega, setDeliveryAddress}) => {
 
-    const { token, user } = useAuth()
-    const isLogged = !!token
-
+    const { user } = useAuth()
     const [direction, setDirection] = useState()
     const [subDirection, setSubDirection] = useState()
 
@@ -54,10 +52,10 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega, setDeliveryAddress}) =
                 </div>
 
                 {tipoEntrega === 'Delivery' ? (
-                    !isLogged ? ( <div className="row g-3 animate__animated animate__fadeIn">
+                     <div className="row g-3 animate__animated animate__fadeIn">
                         <div className="col-md-8">
                             <label className="form-label text-muted small fw-bold">Direccion</label>
-                            <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" onChange={(e) => setDeliveryAddress(e.target.value)} />
+                            <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" value={user?.address || ''} onChange={(e) => setDeliveryAddress(e.target.value)} />
                         </div>
                         <div className="col-4">
                             <label className="form-label text-muted small fw-bold">Comuna</label>
@@ -68,7 +66,7 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega, setDeliveryAddress}) =
                             </select>
                         </div>
                     </div>
-                ) :(<></>) 
+                 
             ): (
 
                     <>
