@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null)
   const [user, setUser] = useState(null)
   const [rol, setRol] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -17,8 +18,10 @@ export const AuthProvider = ({ children }) => {
     if (storedToken && storedUser) {
       setToken(storedToken)
       setUser(JSON.parse(storedUser))
-      setRol(JSON.parse(storedRol))
+      if(storedRol) setRol(JSON.parse(storedRol))
     }
+
+    setLoading(false)
   }, [])
 
   const login = (user, token, rol) => {
@@ -44,7 +47,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ token, user, rol, login, logout, updateUser }}>
+    <AuthContext.Provider value={{ token, user, rol, login, logout, updateUser, loading }}>
       {children}
     </AuthContext.Provider>
   )
