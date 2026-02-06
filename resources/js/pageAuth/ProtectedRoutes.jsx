@@ -3,7 +3,11 @@ import { Navigate, Outlet } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
 const ProtectedRoutes = ({ role }) => {
-  const { token, rol } = useAuth()
+  const { token, rol, loading } = useAuth()
+
+  if (loading) {
+    return <div>Cargando...</div> 
+  }
 
   if (!token) {
     return <Navigate to="/" replace />
