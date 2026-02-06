@@ -67,7 +67,6 @@ const App = () => {
 
           <Route element={<ProtectedRoutes role="admin"/>}>
             <Route path="/admin" element={<LayoutAdmin />}>
-              <Route index element={<Home/>}/>
             </Route>
           </Route>
             
