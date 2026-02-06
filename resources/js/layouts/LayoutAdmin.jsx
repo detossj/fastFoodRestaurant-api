@@ -1,17 +1,15 @@
 import React from 'react'
-import TopBar from '../components/TopBar'
-import Footer from '../components/Footer'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import NavbarAdmin from '../components/NavbarAdmin'
+import TopBarAdmin from '../components/TopbarAdmin'
 
 const LayoutAdmin = () => {
 
   return (
     <>
-    <TopBar/>
-    <Navbar/>
+    <TopBarAdmin/>
+    <NavbarAdmin/>
       <Outlet/>
-    <Footer/>
   </>
   )
 }
