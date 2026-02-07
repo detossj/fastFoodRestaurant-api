@@ -31,6 +31,7 @@ import { StoreProvider } from './context/StoreContext';
 import Success from './pages/Success';
 import Error from './pages/Error';
 import Redirection from './pages/Redirection';
+import Gestionar from './pages/Gestionar';
 
 
 
@@ -67,6 +68,7 @@ const App = () => {
 
           <Route element={<ProtectedRoutes role="admin"/>}>
             <Route path="/admin" element={<LayoutAdmin />}>
+              <Route index element={<Gestionar/>}/>
             </Route>
           </Route>
             
