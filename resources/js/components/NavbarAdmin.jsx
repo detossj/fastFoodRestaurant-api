@@ -42,40 +42,7 @@ const NavbarAdmin = () => {
                       isActive ? "navbar-item active" : "navbar-item"
                     }
                   >
-                    LISTAR PRODUCTO O PROMOCION
-                  </NavLink>
-                </li>
-
-                <li className="nav-item">
-                  <NavLink 
-                    to="/admin" 
-                    className={({ isActive }) =>
-                      isActive ? "navbar-item active" : "navbar-item"
-                    }
-                  >
-                    CREAR PRODUCTO O PROMOCION
-                  </NavLink>
-                </li>
-
-                <li className="nav-item">
-                  <NavLink 
-                    to="/admin" 
-                    className={({ isActive }) =>
-                      isActive ? "navbar-item active" : "navbar-item"
-                    }
-                  >
-                    EDITAR PRODUCTO O PROMOCION
-                  </NavLink>
-                </li>
-
-                <li className="nav-item">
-                  <NavLink 
-                    to="/admin" 
-                    className={({ isActive }) =>
-                      isActive ? "navbar-item active" : "navbar-item"
-                    }
-                  >
-                    ELIMINAR PRODUCTO O PROMOCION
+                    GESTIONAR PRODUCTOS O PROMOCIONES
                   </NavLink>
                 </li>
 
