@@ -1,28 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Config from '../Config';
+import React from 'react'
 import OrderCard from './OrderCard';
+import { useOrders } from '../context/OrderContext';
 
 const OrderList = () => {
 
-    const [orders, setOrders] = useState([]);
-
-    const getOrders = async () => {
-
-        try {
-            const response = await Config.getOrders();
-            if (response.status === 201 || response.status === 200) {
-                setOrders(response.data);
-                console.log("Pedidos obtenidos:", response.data);
-            }
-        } catch (error) {
-            console.error("Error al obtener pedidos:", error.response?.data);
-        }
-
-    }
-
-    useEffect(() => {
-        getOrders();
-    }, []);
+    const { orders } = useOrders()
 
     return (
         <div className='container p-5' style={{ minHeight: '100vh'}}>
