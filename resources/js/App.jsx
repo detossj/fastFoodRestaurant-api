@@ -32,6 +32,7 @@ import Success from './pages/Success';
 import Error from './pages/Error';
 import Redirection from './pages/Redirection';
 import Gestionar from './pages/Gestionar';
+import { OrderProvider } from './context/OrderContext';
 
 
 
@@ -85,25 +86,27 @@ if (document.getElementById('root')) {
     Index.render(
       <AuthProvider>
         <ProductsProvider>
-          <CartProvider>
-            <StoreProvider>
-              <React.StrictMode>
+          <OrderProvider>
+            <CartProvider>
+              <StoreProvider>
+                <React.StrictMode>
 
-              <App/>
-              
-              <ToastContainer
-                position="top-right"
-                autoClose={2500}
-                hideProgressBar={false}
-                newestOnTop
-                closeOnClick
-                pauseOnHover
-                theme="colored"
-              />
-              
-            </React.StrictMode>
-            </StoreProvider>
-          </CartProvider>
+                <App/>
+                
+                <ToastContainer
+                  position="top-right"
+                  autoClose={2500}
+                  hideProgressBar={false}
+                  newestOnTop
+                  closeOnClick
+                  pauseOnHover
+                  theme="colored"
+                />
+                
+              </React.StrictMode>
+              </StoreProvider>
+            </CartProvider>
+          </OrderProvider>
         </ProductsProvider>
       </AuthProvider>
     )
