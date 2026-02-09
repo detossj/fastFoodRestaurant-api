@@ -2,7 +2,7 @@ import React from 'react'
 
 const LoadingBar = () => {
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: "80vh" }}>
         <div 
           className="spinner-border" 
           role="status" 
