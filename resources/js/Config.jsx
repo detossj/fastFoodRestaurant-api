@@ -35,6 +35,10 @@ export default {
   // ORDERS
   createOrder: (data) => api.post("/orders", data),
   getOrders: () => api.get("/orders"),
+
+  // MANAGE
+  getManage: () => api.get("/manage"),
+
 };
   
   
