@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ManageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PromotionController;
@@ -28,6 +29,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::patch('/auth/profile',[AuthController::class, 'updateProfile']);
     Route::post('/orders', [OrderController::class, 'store']);
     Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/manage', [ManageController::class, 'index']);
     
 });
 
