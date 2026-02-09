@@ -1,39 +1,27 @@
 import React, { useState } from 'react';
 import './ManageList.css';
+import { useManage } from '../context/ManageContext';
+import LoadingBar from './LoadingBar';
 
 const ManageList = () => {
 
   const [filterType, setFilterType] = useState('all');
   const [filterAvailable, setFilterAvailable] = useState('all');
 
-  const items = [
-    {
-      id: 1,
-      type: 'product',
-      name: 'Pizza Napolitana',
-      description: 'Pizza clásica con tomate y queso',
-      price: 8900,
-      available: true,
-    },
-    {
-      id: 2,
-      type: 'product',
-      name: 'Hamburguesa Clásica',
-      description: 'Carne, queso y lechuga',
-      price: 4500,
-      available: true,
-    },
-    {
-      id: 3,
-      type: 'promotion',
-      name: 'Promo Pizza + Bebida',
-      description: 'Pizza grande + bebida',
-      price: 10900,
-      available: false,
-    },
-  ];
+  const { manage, loading, error } = useManage(); 
 
-  const filteredItems = items.filter(item => {
+  if (loading) {
+    return (
+      <LoadingBar/>
+    );
+  }
+
+
+  if (error) {
+    return <div className="alert alert-danger m-5">{error}</div>;
+  }
+
+  const filteredItems = manage.filter(item => {
     if (filterType !== 'all' && item.type !== filterType) return false;
     if (filterAvailable !== 'all') {
       const available = filterAvailable === 'true';
