@@ -10,6 +10,10 @@ const PublicRoutes = () => {
 
   if (loading) return null;
 
+  if (token && rol === "admin") {
+    return <Navigate to="/admin" replace />
+  }
+
   if (token && authPages.includes(location.pathname)) {
     return <Navigate to={rol === "admin" ? "/admin" : "/"} replace />
   }
