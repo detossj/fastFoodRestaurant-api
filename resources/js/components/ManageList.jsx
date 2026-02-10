@@ -22,11 +22,15 @@ const ManageList = () => {
   }
 
   const filteredItems = manage.filter(item => {
+
     if (filterType !== 'all' && item.type !== filterType) return false;
+
     if (filterAvailable !== 'all') {
-      const available = filterAvailable === 'true';
-      if (item.available !== available) return false;
+      const targetValue = filterAvailable === 'true' ? 1 : 0;
+
+      if (Number(item.available) !== targetValue) return false;
     }
+
     return true;
   });
 
@@ -37,15 +41,15 @@ const ManageList = () => {
 
       <div className="filters mb-4">
         <select value={filterType} onChange={e => setFilterType(e.target.value)}>
-          <option value="all">Todos</option>
+          <option value="all">Todos los Tipos</option>
           <option value="product">Productos</option>
           <option value="promotion">Promociones</option>
         </select>
 
         <select value={filterAvailable} onChange={e => setFilterAvailable(e.target.value)}>
-          <option value="all">Disponibilidad</option>
-          <option value="true">Disponibles</option>
-          <option value="false">No disponibles</option>
+          <option value="all">Toda Disponibilidad</option>
+          <option value="true">Disponibles (Sí)</option>
+          <option value="false">No disponibles (No)</option>
         </select>
 
         <button className="btn-create">+ Crear</button>
@@ -65,24 +69,39 @@ const ManageList = () => {
           </thead>
 
           <tbody>
-            {filteredItems.map(item => (
-              <tr key={item.id}>
-                <td>{item.type === 'product' ? 'Producto' : 'Promoción'}</td>
-                <td>{item.name}</td>
-                <td>{item.description}</td>
-                <td>${item.price}</td>
-                <td>
-                  <span className={item.available ? 'badge success' : 'badge danger'}>
-                    {item.available ? 'Sí' : 'No'}
-                  </span>
-                </td>
-                <td className="actions">
-                  <button className="btn-edit">Editar</button>
-                  <button className="btn-delete">Eliminar</button>
-                </td>
-              </tr>
-            ))}
+            {filteredItems.map(item => {
+              
+              const isAvailable = Number(item.available) === 1;
+
+              return (
+                <tr key={`${item.type}-${item.id}`}> 
+                  <td>{item.type === 'product' ? 'Producto' : 'Promoción'}</td>
+                  <td>{item.name}</td>
+                  <td>{item.description}</td>
+                  <td>${item.price}</td>
+                  <td>
+
+                    <span className={isAvailable ? 'badge success' : 'badge danger'}>
+                      {isAvailable ? 'Sí' : 'No'}
+                    </span>
+                  </td>
+                  <td className="actions">
+                    <button className="btn-edit">Editar</button>
+                    <button className="btn-delete">Eliminar</button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
+
+          <tfoot>
+            <tr>
+              <td colSpan="6" style={{ textAlign: 'left', fontWeight: 'bold', padding: '15px' }}>
+                Total registros encontrados: {filteredItems.length}
+              </td>
+            </tr>
+          </tfoot>
+
         </table>
       </div>
 
