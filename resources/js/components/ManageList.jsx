@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import './ManageList.css';
 import { useManage } from '../context/ManageContext';
 import LoadingBar from './LoadingBar';
+import ManageModal from './ManageModal';
 
 const ManageList = () => {
 
   const [filterType, setFilterType] = useState('all');
   const [filterAvailable, setFilterAvailable] = useState('all');
+  const [modal, setModal] = useState(false)
 
   const { manage, loading, error } = useManage(); 
 
@@ -34,6 +36,10 @@ const ManageList = () => {
     return true;
   });
 
+  const onClickCrear = () => {
+    setModal(true)
+  }
+
   return (
     <div className="container p-5" style={{ minHeight: '100vh' }}>
 
@@ -52,7 +58,7 @@ const ManageList = () => {
           <option value="false">No disponibles (No)</option>
         </select>
 
-        <button className="btn-create">+ Crear</button>
+        <button onClick={()=> onClickCrear()} className="btn-create">+ Crear</button>
       </div>
 
       <div className="table-wrapper">
@@ -104,6 +110,10 @@ const ManageList = () => {
 
         </table>
       </div>
+
+      {
+        modal && <ManageModal close={setModal}/>
+      }
 
     </div>
   );
