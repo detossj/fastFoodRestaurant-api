@@ -10,7 +10,7 @@ const ManageList = () => {
   const [filterAvailable, setFilterAvailable] = useState('all');
   const [modal, setModal] = useState(false)
 
-  const { manage, loading, error } = useManage(); 
+  const { manage, loading, error, openEdit, selectedItem, closeEdit } = useManage(); 
 
   if (loading) {
     return (
@@ -92,7 +92,7 @@ const ManageList = () => {
                     </span>
                   </td>
                   <td className="actions">
-                    <button className="btn-edit">Editar</button>
+                    <button className="btn-edit" onClick={() => openEdit(item)}>Editar</button>
                     <button className="btn-delete">Eliminar</button>
                   </td>
                 </tr>
@@ -111,9 +111,12 @@ const ManageList = () => {
         </table>
       </div>
 
-      {
-        modal && <ManageModal close={setModal}/>
-      }
+      { (selectedItem || modal) && (
+        <ManageModal 
+            close={() => { setModal(false); closeEdit(); }} 
+            editingItem={selectedItem} 
+        />
+      )}
 
     </div>
   );
