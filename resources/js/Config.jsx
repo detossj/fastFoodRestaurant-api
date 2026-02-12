@@ -2,6 +2,7 @@ import axios from "axios";
 
 const API_BASE_URL = "http://localhost:8000";
 const API_URL = `${API_BASE_URL}/api`;
+const BASE_URL_IMAGES = "http://localhost:8000/storage";
 
 // es mejor hacer esto que axios.interceptors.request.use... porque haciendolo con axios afecta todas las request del proyecto
 const api = axios.create({
@@ -20,6 +21,7 @@ api.interceptors.request.use((config) => {
 
 export default {
   API_BASE_URL,
+  BASE_URL_IMAGES,
 
   // AUTH
   Login: (data) => api.post("/auth/login", data),
