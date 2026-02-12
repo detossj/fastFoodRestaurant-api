@@ -10,6 +10,7 @@ export const ManageProvider = ({ children }) => {
     const [manage, setManage] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [selectedItem, setSelectedItem] = useState(null)
 
 
     const loadData = async () => {
@@ -29,13 +30,21 @@ export const ManageProvider = ({ children }) => {
             setLoading(false);
         }
     };
+
+    const openEdit = (item) => {
+        setSelectedItem(item);
+    };
+
+    const closeEdit = () => {
+        setSelectedItem(null);
+    };
     
     useEffect(() => {
         loadData();
     }, []);
 
     return (
-        <ManageContext.Provider value={{ manage, loading, error }}>
+        <ManageContext.Provider value={{ manage, loading, error, selectedItem, openEdit, closeEdit, loadData }}>
             {children}
         </ManageContext.Provider>
     )
