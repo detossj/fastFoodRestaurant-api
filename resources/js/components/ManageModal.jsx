@@ -3,7 +3,7 @@ import { FaTag, FaAlignLeft, FaDollarSign, FaImage, FaList, FaCalendarAlt, FaTim
 import { toast } from 'react-toastify';
 import Config from '../Config';
 
-const ManageModal = ({ close }) => {
+const ManageModal = ({ close, editingItem }) => {
 
   const [isProduct, setIsProduct] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -39,6 +39,32 @@ const ManageModal = ({ close }) => {
     setFormData(prev => ({ ...prev, image_url: autoUrl }));
   }, [formData.name, isProduct]);
 
+  useEffect(() => {
+    if (editingItem) {
+      setIsProduct(editingItem.type === 'product');
+      setFormData({
+        name: editingItem.name || '',
+        description: editingItem.description || '',
+        price: editingItem.price || '',
+        image_url: editingItem.image_url || '',
+        available: Number(editingItem.available) === 1,
+        category_id: editingItem.category_id || '',
+        start_date: editingItem.start_date || '',
+        end_date: editingItem.end_date || '',
+      });
+      if (editingItem.image_url) {
+      // ARREGLAR
+      const fullUrl = editingItem.image_url.startsWith('http') 
+        ? editingItem.image_url 
+        : `${Config.BASE_URL_IMAGES}${editingItem.image_url}`;
+        
+      setImagePreview(fullUrl);
+      console.log(fullUrl)
+    }
+
+  }
+  }, [editingItem]);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -64,7 +90,6 @@ const ManageModal = ({ close }) => {
 
     const dataToSend = new FormData();
     
-
     dataToSend.append('name', formData.name);
     dataToSend.append('description', formData.description);
     dataToSend.append('price', formData.price);
@@ -84,16 +109,22 @@ const ManageModal = ({ close }) => {
 
     try {
       if (isProduct) {
-        await Config.createProduct(dataToSend); 
-        toast.success("Producto creado correctamente");
+        // CREAR FUNCIONALIDAD 
+        // editingItem 
+        //   ? await Config.updateProduct(editingItem.id, dataToSend) 
+        //   : await Config.createProduct(dataToSend);
       } else {
-        await Config.createPromotion(dataToSend);
-        toast.success("Promoción creada correctamente");
+        // CREAR FUNCIONALIDAD 
+        // editingItem 
+        //   ? await Config.updatePromotion(editingItem.id, dataToSend) 
+        //   : await Config.createPromotion(dataToSend);
       }
-      close(false); 
+      
+      toast.success(editingItem ? "Actualizado correctamente" : "Creado correctamente");
+      loadData(); 
+      close(); 
     } catch (error) {
-      console.error(error);
-      toast.error("Hubo un error al guardar");
+      toast.error("Error al guardar");
     } finally {
       setLoading(false);
     }
@@ -116,7 +147,7 @@ const ManageModal = ({ close }) => {
           <div className="card-body">
             
             <h2 className="fw-bold text-center mb-4">
-              {isProduct ? 'Nuevo Producto' : 'Nueva Promoción'}
+              {editingItem ? 'Editar' : (isProduct ? 'Nuevo' : 'Nueva')} {isProduct ? 'Producto' : 'Promoción'}
             </h2>
 
             <div className="row mb-4">
@@ -125,6 +156,9 @@ const ManageModal = ({ close }) => {
                   type="button"
                   className={`btn w-100 fw-bold ${isProduct ? 'btn-dark' : 'btn-outline-dark'}`}
                   onClick={() => setIsProduct(true)}
+                  // BLOQUEO: Si existe editingItem, se deshabilita
+                  disabled={editingItem !== null} 
+                  style={{ cursor: editingItem ? 'not-allowed' : 'pointer', opacity: editingItem && !isProduct ? 0.5 : 1 }}
                 >
                   <FaBoxOpen className="me-2"/> Producto
                 </button>
@@ -134,6 +168,9 @@ const ManageModal = ({ close }) => {
                   type="button"
                   className={`btn w-100 fw-bold ${!isProduct ? 'btn-dark' : 'btn-outline-dark'}`}
                   onClick={() => setIsProduct(false)}
+                  // BLOQUEO: Si existe editingItem, se deshabilita
+                  disabled={editingItem !== null}
+                  style={{ cursor: editingItem ? 'not-allowed' : 'pointer', opacity: editingItem && isProduct ? 0.5 : 1 }}
                 >
                   <FaPercentage className="me-2"/> Promoción
                 </button>
@@ -272,13 +309,13 @@ const ManageModal = ({ close }) => {
 
 
                 {imagePreview && (
-                    <div className="mt-2 text-center">
-                        <img 
-                            src={imagePreview} 
-                            alt="Previsualización" 
-                            style={{ maxWidth: '100%', maxHeight: '200px', borderRadius: '8px', border: '1px solid #ddd' }} 
-                        />
-                    </div>
+                  <div className="mt-2 text-center">
+                      <img 
+                        src={imagePreview} 
+                        alt="Previsualización" 
+                        style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px', border: '1px solid #ddd' }} 
+                      />
+                  </div>
                 )}
               </div>
 
