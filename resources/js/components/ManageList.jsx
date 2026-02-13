@@ -10,7 +10,7 @@ const ManageList = () => {
   const [filterAvailable, setFilterAvailable] = useState('all');
   const [modal, setModal] = useState(false)
 
-  const { manage, loading, error, openEdit, selectedItem, closeEdit } = useManage(); 
+  const { manage, loading, error, openEdit, selectedItem, closeEdit, loadData } = useManage(); 
 
   if (loading) {
     return (
@@ -113,8 +113,9 @@ const ManageList = () => {
 
       { (selectedItem || modal) && (
         <ManageModal 
-            close={() => { setModal(false); closeEdit(); }} 
-            editingItem={selectedItem} 
+          close={() => { setModal(false); closeEdit(); }} 
+          editingItem={selectedItem} 
+          loadData={loadData}
         />
       )}
 
