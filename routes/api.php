@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/orders', [OrderController::class, 'store']);
     Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/manage', [ManageController::class, 'index']);
-    
+    Route::post('/manage', [ManageController::class, 'updateManage']);
 });
 
 Route::get('/user', function (Request $request) {
