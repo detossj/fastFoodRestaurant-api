@@ -3,7 +3,7 @@ import { FaTag, FaAlignLeft, FaDollarSign, FaImage, FaList, FaCalendarAlt, FaTim
 import { toast } from 'react-toastify';
 import Config from '../Config';
 
-const ManageModal = ({ close, editingItem }) => {
+const ManageModal = ({ close, editingItem, loadData }) => {
 
   const [isProduct, setIsProduct] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -90,10 +90,16 @@ const ManageModal = ({ close, editingItem }) => {
 
     const dataToSend = new FormData();
     
+    if (editingItem) {
+        dataToSend.append('id', editingItem.id);
+    }
+
+    dataToSend.append('type', isProduct ? 'product' : 'promotion');
+
     dataToSend.append('name', formData.name);
     dataToSend.append('description', formData.description);
     dataToSend.append('price', formData.price);
-    dataToSend.append('image_url', formData.image_url); 
+    // dataToSend.append('image_url', formData.image_url); 
     dataToSend.append('available', formData.available ? 1 : 0);
 
     if (isProduct) {
@@ -108,23 +114,21 @@ const ManageModal = ({ close, editingItem }) => {
     }
 
     try {
-      if (isProduct) {
-        // CREAR FUNCIONALIDAD 
-        // editingItem 
-        //   ? await Config.updateProduct(editingItem.id, dataToSend) 
-        //   : await Config.createProduct(dataToSend);
-      } else {
-        // CREAR FUNCIONALIDAD 
-        // editingItem 
-        //   ? await Config.updatePromotion(editingItem.id, dataToSend) 
-        //   : await Config.createPromotion(dataToSend);
-      }
-      
-      toast.success(editingItem ? "Actualizado correctamente" : "Creado correctamente");
-      loadData(); 
-      close(); 
+        const response = await Config.updateManage(dataToSend)
+
+        const result = response.data;
+
+        if(result.success) {
+          toast.success("Actualizado correctamente");
+          loadData(); 
+          close();
+        } else {
+          toast.error(result.message || "Error al actualizar");
+        }
+
     } catch (error) {
-      toast.error("Error al guardar");
+      console.error(error);
+      toast.error("Error de conexión");
     } finally {
       setLoading(false);
     }
