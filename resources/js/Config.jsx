@@ -40,6 +40,7 @@ export default {
 
   // MANAGE
   getManage: () => api.get("/manage"),
+  updateManage: (data) => api.post("/manage", data),
 
 };
   
