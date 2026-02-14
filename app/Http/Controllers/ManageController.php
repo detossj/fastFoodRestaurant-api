@@ -108,4 +108,31 @@ class ManageController extends Controller
             'data'    => $item
         ]);
     }
+
+    public function deleteManage(Request $request) {
+        $validation = [
+            'id'          => 'required|integer', 
+            'type'        => 'required|in:product,promotion',  
+        ];
+
+        $validated = $request->validate($validation);
+
+        if ($request->type === 'product') {
+            $item = Product::find($request->id);
+        } else {
+            $item = Promotion::find($request->id);
+        }
+
+        if (!$item) {
+            return response()->json(['success' => false, 'message' => 'Ítem no encontrado'], 404);
+        }
+
+        $item->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => ($request->type === 'product' ? 'Producto' : 'Promoción') . ' eliminado correctamente',
+            'data'    => $item
+        ]);
+    }
 }
