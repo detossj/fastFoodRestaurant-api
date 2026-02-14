@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/manage', [ManageController::class, 'index']);
     Route::post('/manage', [ManageController::class, 'updateManage']);
+    Route::delete('/manage', [ManageController::class, 'deleteManage']);
 });
 
 Route::get('/user', function (Request $request) {
