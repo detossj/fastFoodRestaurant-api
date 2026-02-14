@@ -41,6 +41,7 @@ export default {
   // MANAGE
   getManage: () => api.get("/manage"),
   updateManage: (data) => api.post("/manage", data),
+  deleteManage: (data) => api.delete("/manage", {data: data}),
 
 };
   
