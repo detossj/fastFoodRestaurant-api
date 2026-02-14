@@ -3,6 +3,8 @@ import './ManageList.css';
 import { useManage } from '../context/ManageContext';
 import LoadingBar from './LoadingBar';
 import ManageModal from './ManageModal';
+import Config from '../Config';
+import { toast } from 'react-toastify';
 
 const ManageList = () => {
 
@@ -17,6 +19,35 @@ const ManageList = () => {
       <LoadingBar/>
     );
   }
+
+  const handleDelete = async (item) => {
+    const confirmMessage = `¿Estás seguro de eliminar "${item.name}"?\nEsta acción no se puede deshacer.`;
+    
+    if (!window.confirm(confirmMessage)) {
+      return;
+    }
+
+    try {
+      const payload = {
+        id: item.id,
+        type: item.type
+      };
+
+      const response = await Config.deleteManage(payload);
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        loadData(); 
+      } else {
+        toast.error("No se pudo eliminar el elemento");
+      }
+
+    } catch (error) {
+      console.error("Error eliminando:", error);
+      const msg = error.response?.data?.message || "Error al conectar con el servidor";
+      toast.error(msg);
+    }
+  };
 
 
   if (error) {
@@ -93,7 +124,7 @@ const ManageList = () => {
                   </td>
                   <td className="actions">
                     <button className="btn-edit" onClick={() => openEdit(item)}>Editar</button>
-                    <button className="btn-delete">Eliminar</button>
+                    <button className="btn-delete" onClick={() => handleDelete(item)}>Eliminar</button>
                   </td>
                 </tr>
               );
