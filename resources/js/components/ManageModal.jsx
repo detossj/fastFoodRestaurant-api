@@ -3,7 +3,7 @@ import { FaTag, FaAlignLeft, FaDollarSign, FaImage, FaList, FaCalendarAlt, FaTim
 import { toast } from 'react-toastify';
 import Config from '../Config';
 
-const ManageModal = ({ close, editingItem, loadData }) => {
+const ManageModal = ({ close, editingItem, loadData, loadProducts }) => {
 
   const [isProduct, setIsProduct] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -121,6 +121,7 @@ const ManageModal = ({ close, editingItem, loadData }) => {
         if(result.success) {
           toast.success("Actualizado correctamente");
           loadData(); 
+          loadProducts();
           close();
         } else {
           toast.error(result.message || "Error al actualizar");
