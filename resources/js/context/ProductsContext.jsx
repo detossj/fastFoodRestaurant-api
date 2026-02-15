@@ -45,7 +45,7 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     // al colocar los products y el loading en el value hace que cualquier componente pueda leerlos usando el useProducts que se define abajo
-    <ProductsContext.Provider value={{ products, categories, promotions, loading, error}}>
+    <ProductsContext.Provider value={{ products, categories, promotions, loading, error, loadData}}>
       {children}
     </ProductsContext.Provider>
   );
