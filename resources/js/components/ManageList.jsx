@@ -5,6 +5,7 @@ import LoadingBar from './LoadingBar';
 import ManageModal from './ManageModal';
 import Config from '../Config';
 import { toast } from 'react-toastify';
+import { useProducts } from '../context/ProductsContext';
 
 const ManageList = () => {
 
@@ -13,6 +14,8 @@ const ManageList = () => {
   const [modal, setModal] = useState(false)
 
   const { manage, loading, error, openEdit, selectedItem, closeEdit, loadData } = useManage(); 
+
+  const {loadData: loadProducts} = useProducts()
 
   if (loading) {
     return (
@@ -38,6 +41,7 @@ const ManageList = () => {
       if (response.data.success) {
         toast.success(response.data.message);
         loadData(); 
+        loadProducts();
       } else {
         toast.error("No se pudo eliminar el elemento");
       }
@@ -147,6 +151,7 @@ const ManageList = () => {
           close={() => { setModal(false); closeEdit(); }} 
           editingItem={selectedItem} 
           loadData={loadData}
+          loadProducts={loadProducts}
         />
       )}
 
