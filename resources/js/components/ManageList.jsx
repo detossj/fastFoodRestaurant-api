@@ -6,6 +6,10 @@ import ManageModal from './ManageModal';
 import Config from '../Config';
 import { toast } from 'react-toastify';
 import { useProducts } from '../context/ProductsContext';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 const ManageList = () => {
 
@@ -24,13 +28,35 @@ const ManageList = () => {
   }
 
   const handleDelete = async (item) => {
-    const confirmMessage = `¿Estás seguro de eliminar "${item.name}"?\nEsta acción no se puede deshacer.`;
     
-    if (!window.confirm(confirmMessage)) {
+    // Configuración del Modal de SweetAlert
+    const result = await MySwal.fire({
+      title: `¿Eliminar "${item.name}"?`,
+      text: "Esta acción no se puede deshacer.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6', 
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true // Pone el botón de cancelar primero 
+    });
+
+    // Si el usuario hace clic en "Cancelar" o fuera del modal, no hace nada
+    if (!result.isConfirmed) {
       return;
     }
 
+    // Si confirmó
     try {
+      // Muestra un "cargando..." mientras se borra
+      MySwal.fire({
+        title: 'Eliminando...',
+        didOpen: () => {
+          MySwal.showLoading()
+        }
+      });
+
       const payload = {
         id: item.id,
         type: item.type
@@ -39,15 +65,22 @@ const ManageList = () => {
       const response = await Config.deleteManage(payload);
 
       if (response.data.success) {
-        toast.success(response.data.message);
+        await MySwal.fire(
+          '¡Eliminado!',
+          response.data.message,
+          'success'
+        );
+
         loadData(); 
         loadProducts();
       } else {
+        MySwal.close();
         toast.error("No se pudo eliminar el elemento");
       }
 
     } catch (error) {
       console.error("Error eliminando:", error);
+      MySwal.close();
       const msg = error.response?.data?.message || "Error al conectar con el servidor";
       toast.error(msg);
     }
