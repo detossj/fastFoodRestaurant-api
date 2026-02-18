@@ -3,6 +3,7 @@ import logo from "../../assets/images/logo.webp"
 import "./TopBar.css"
 import { NavLink, useLocation } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import { Pizza, Store, User } from 'lucide-react';
 
 const TopBar = () => {
   const { user, logout } = useAuth()
@@ -36,26 +37,26 @@ const TopBar = () => {
 
           <NavLink
             to="/"
-            className={isMenuActive ? "topbar-item active" : "topbar-item"}
+            className={isMenuActive ? "topbar-item active d-flex align-items-center gap-2" : "topbar-item d-flex align-items-center gap-2"}
           >
-            <i className="fa-solid fa-pizza-slice me-1"></i> MENÚ
+            <Pizza /> MENÚ
           </NavLink>
 
           <NavLink
             to="/locales"
             className={({ isActive }) =>
-              isActive ? "topbar-item active" : "topbar-item"
+              isActive ? "topbar-item active d-flex align-items-center gap-2" : "topbar-item d-flex align-items-center gap-2"
             }
           >
-            <i className="fa-solid fa-store me-1"></i> LOCALES
+            <Store /> LOCALES
           </NavLink>
 
 
           {user ? (
             <div className="d-flex align-items-center gap-2">
 
-              <span className="topbar-item">
-                <i className="fa-solid fa-user me-1"></i> {user.name}
+              <span className="topbar-item d-flex align-items-center gap-2">
+                <User />{user.name}
               </span>
 
               <div className="dropdown">
@@ -94,9 +95,9 @@ const TopBar = () => {
           ) : (
             <NavLink
               to="/login"
-              className={isAuthActive ? "topbar-item active" : "topbar-item"}
+              className={isAuthActive ? "topbar-item active d-flex align-items-center gap-2" : "topbar-item d-flex align-items-center gap-2"}
             >
-              <i className="fa-solid fa-user me-1"></i> INGRESAR
+              <User /> INGRESAR
             </NavLink>
           )}
 
