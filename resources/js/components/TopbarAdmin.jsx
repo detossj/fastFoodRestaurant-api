@@ -3,6 +3,7 @@ import logo from "../../assets/images/logo.webp"
 import "./TopBar.css"
 import { NavLink, useLocation } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import { User } from "lucide-react"
 
 const TopBarAdmin = () => {
   const { user, logout } = useAuth()
@@ -25,8 +26,8 @@ const TopBarAdmin = () => {
           {user ? (
             <div className="d-flex align-items-center gap-2">
 
-              <span className="topbar-item">
-                <i className="fa-solid fa-user me-1"></i> {user.name}
+              <span className="topbar-item d-flex align-items-center gap-2">
+                <User />{user.name}
               </span>
 
               <div className="dropdown">
