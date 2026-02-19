@@ -3,6 +3,7 @@ import burgerImg from '../../assets/images/burger-potato.webp';
 import pizzaDrinkImg from '../../assets/images/pizza-drink.webp';
 import pizzaDrinkGarlicsticksImg from '../../assets/images/pizza-drink-garlicsticks.webp';
 import { useNavigate } from 'react-router-dom';
+import './ImageCarusel.css';
 
 const ImageCarusel = () => {
 
@@ -13,10 +14,10 @@ const ImageCarusel = () => {
   }
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-3 mt-md-5">
 
       <div id="carouselExampleAutoplaying"
-           className="carousel slide"
+           className="carousel slide shadow-sm rounded-4 overflow-hidden"
            data-bs-ride="carousel"
            data-bs-interval="3000">
 
@@ -24,8 +25,8 @@ const ImageCarusel = () => {
 
           <div className="carousel-item active">
             <img 
-              src={burgerImg} className="d-block w-100"
-              style={{ height: '500px', objectFit: 'cover' }}
+              src={burgerImg} 
+              className="d-block w-100 carousel-custom-img cursor-pointer"
               alt="Hamburguesa con papas"
               onClick={onClick} 
             />
@@ -33,8 +34,8 @@ const ImageCarusel = () => {
 
           <div className="carousel-item">
             <img 
-              src={pizzaDrinkImg} className="d-block w-100"
-              style={{ height: '500px', objectFit: 'cover' }}
+              src={pizzaDrinkImg} 
+              className="d-block w-100 carousel-custom-img cursor-pointer"
               alt="Pizza con bebida" 
               onClick={onClick}   
             />
@@ -42,8 +43,8 @@ const ImageCarusel = () => {
 
           <div className="carousel-item">
             <img 
-              src={pizzaDrinkGarlicsticksImg} className="d-block w-100"
-              style={{ height: '500px', objectFit: 'cover' }}
+              src={pizzaDrinkGarlicsticksImg} 
+              className="d-block w-100 carousel-custom-img cursor-pointer"
               alt="Pizza de pepperoni" 
               onClick={onClick} 
             />
