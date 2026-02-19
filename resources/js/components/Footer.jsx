@@ -35,8 +35,8 @@ const Footer = () => {
           </div>
 
           <div className="col-12 col-md-4 col-lg-3">
-            <h5 className="fw-bold mb-3">FAST FOOD</h5>
-            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-2">
+            <h5 className="fw-bold mb-md-3">FAST FOOD</h5>
+            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-md-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Acerca de nosotros</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Ingredientes</a></li>
               <li><a href="#s" className="footer-link" onClick={handleLinkClick}>Nuestros locales</a></li>
@@ -45,8 +45,8 @@ const Footer = () => {
           </div>
 
           <div className="col-12 col-md-4 col-lg-3">
-            <h5 className="fw-bold mb-3">AYUDA</h5>
-            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-2">
+            <h5 className="fw-bold mb-md-3">AYUDA</h5>
+            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-md-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Preguntas frecuentes</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Contacto</a></li>
               <li className="text-muted mt-2">
@@ -56,8 +56,8 @@ const Footer = () => {
           </div>
 
           <div className="col-12 col-md-4 col-lg-3">
-            <h5 className="fw-bold mb-3">LEGAL</h5>
-            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-2">
+            <h5 className="fw-bold mb-md-3">LEGAL</h5>
+            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-md-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Términos y Condiciones</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Política de privacidad</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Tratamiento de datos</a></li>
