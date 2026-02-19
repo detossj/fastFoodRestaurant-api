@@ -14,12 +14,14 @@ const Footer = () => {
     <footer className="footer-papa py-5">
       <div className="container">
         
-        <div className="row mb-4 gy-4"> 
+        <div className="row mb-4 gy-4 text-center text-md-start"> 
           
           <div className="col-12 col-md-4 col-lg-3">
-            <img src={logo} alt="Logo Fast Food Restaurant" className="mb-3 logo-footer" />
+
+            <img src={logo} alt="Logo Fast Food Restaurant" className="mb-3 logo-footer mx-auto mx-md-0 d-block" />
             <p className="text-muted mb-2">Síguenos en:</p>
-            <div className="d-flex gap-3 fs-4">
+
+            <div className="d-flex justify-content-center justify-content-md-start gap-3 fs-4">
               <a href="#" target="_blank" rel="noreferrer" className="social-icon text-dark" aria-label="Instagram" onClick={handleLinkClick}>
                 <i className="fab fa-instagram"></i>
               </a>
@@ -32,9 +34,9 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-6 col-md-4 col-lg-3">
+          <div className="col-12 col-md-4 col-lg-3">
             <h5 className="fw-bold mb-3">FAST FOOD</h5>
-            <ul className="list-unstyled footer-list d-flex flex-column gap-2">
+            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Acerca de nosotros</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Ingredientes</a></li>
               <li><a href="#s" className="footer-link" onClick={handleLinkClick}>Nuestros locales</a></li>
@@ -42,9 +44,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="col-6 col-md-4 col-lg-3">
+          <div className="col-12 col-md-4 col-lg-3">
             <h5 className="fw-bold mb-3">AYUDA</h5>
-            <ul className="list-unstyled footer-list d-flex flex-column gap-2">
+            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Preguntas frecuentes</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Contacto</a></li>
               <li className="text-muted mt-2">
@@ -53,9 +55,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="col-6 col-md-4 col-lg-3">
+          <div className="col-12 col-md-4 col-lg-3">
             <h5 className="fw-bold mb-3">LEGAL</h5>
-            <ul className="list-unstyled footer-list d-flex flex-column gap-2">
+            <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Términos y Condiciones</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Política de privacidad</a></li>
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Tratamiento de datos</a></li>
@@ -64,8 +66,9 @@ const Footer = () => {
 
         </div>
 
-        <div className="text-center pt-4 border-top">
-          <p className="mb-0 text-muted small">
+       
+        <div className="text-center pt-4 border-top px-2">
+          <p className="mb-0 text-muted small text-wrap">
             © {currentYear} Fast Food Restaurant. Todos los derechos reservados.
           </p>
         </div>
