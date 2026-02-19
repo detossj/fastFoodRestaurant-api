@@ -1,0 +1,26 @@
+.carousel-custom-img {
+  height: 200px;
+  transition: transform 0.3s ease; 
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .carousel-custom-img {
+    height: 350px;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel-custom-img {
+    height: 500px;
+  }
+}
+
+@media (hover: hover) {
+  .carousel-custom-img:hover {
+    transform: scale(1.02);
+  }
+}
