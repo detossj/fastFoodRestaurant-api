@@ -25,9 +25,10 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* cuando aparezca el logo, mover INICIO un poco a la derecha */
-.with-logo .nav-item:first-child {
-  margin-left: 20px; 
+@media (min-width: 992px) {
+  .with-logo .nav-item:first-child {
+    margin-left: 20px; 
+  }
 }
 
 .cart-button {
