@@ -12,16 +12,16 @@ const Benefits = () => {
   return (
 
     <div className="py-5 mt-5" style={{ background: "rgb(240, 240, 240)" }}>
-      <div className="container my-5" >
+      <div className="container my-md-5" >
         <h3 className="text-center mb-4">¿Por qué elegirnos?</h3>
         <div className="row text-center g-4">
           {items.map((item, i) => (
             <div key={i} className="col-6 col-md-3">
-              <div className="p-4 shadow-sm bg-white rounded-4 h-100 d-flex flex-column align-items-center">
+              <div className=" p-3 p-md-4 shadow-sm bg-white rounded-4 h-100 d-flex flex-column align-items-center">
                 <div className="text-warning mb-3">
                   {item.icon}
                 </div>
-                <h6 className="fw-bold" style={{ fontSize: "20px", color: "black" }}>{item.title}</h6>
+                <h6 className="fw-bold px-3" style={{ fontSize: "20px", color: "black" }} >{item.title}</h6>
                 <p style={{ fontSize: "16px", color: "#555" }}>{item.text}</p>
               </div>
             </div>
