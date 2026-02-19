@@ -27,13 +27,13 @@ const TopBar = () => {
 
   return (
     <div className="py-2" style={{ borderBottom: "1px solid #e5e5e5" }}>
-      <div className="container d-flex justify-content-between align-items-center">
+      <div className="container d-flex flex-column flex-md-row justify-content-md-between align-items-center gap-3 gap-md-0">
 
         <NavLink to="/">
           <img src={logo} alt="Logo" style={{ height: "70px" }} />
         </NavLink>
 
-        <div className="d-flex align-items-center gap-4">
+        <div className="d-flex flex-wrap justify-content-center align-items-center gap-3 gap-md-4">
 
           <NavLink
             to="/"
