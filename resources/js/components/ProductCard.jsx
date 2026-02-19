@@ -4,7 +4,7 @@ import Config from '../Config';
 
 const ProductCard = ({ product, onClick }) => {
   return (
-    <div className="product-card shadow rounded p-3">
+    <div className="product-card shadow rounded">
 
       <div className="product-img-wrapper mb-3">
         <img 
@@ -26,7 +26,7 @@ const ProductCard = ({ product, onClick }) => {
           </p>
       </div>
 
-      <div className="product-bottom" onClick={onClick}>
+      <div className="product-bottom mb-3" onClick={onClick}>
         <button className="add-cart-btn-card">
           AGREGAR <span className="price">${Math.trunc(product.price)}</span>
         </button>
