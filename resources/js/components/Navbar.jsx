@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Collapse } from 'bootstrap'; 
 import './NavBar.css';
 import logo from '../../assets/images/logo.webp';
 import { FaCartShopping } from "react-icons/fa6";
@@ -10,6 +11,7 @@ const Navbar = () => {
 
   const [scrolled, setScrolled] = useState(false);
   const [cart, setCart] = useState(false)
+  const menuRef = useRef(null);
 
   useEffect(() => {
     // Funcion para que la navbar quede pegada arriba al scrollear
@@ -24,6 +26,14 @@ const Navbar = () => {
   const showCart = (e) => {
     e.preventDefault();
     setCart(true);
+  };
+
+  // Función para cerrar el menú programáticamente
+  const closeMenu = () => {
+    if (menuRef.current) {
+      const bsCollapse = new Collapse(menuRef.current, { toggle: false });
+      bsCollapse.hide();
+    }
   };
 
   const { totalItems } = useCart()
@@ -70,13 +80,14 @@ const Navbar = () => {
             </div>
 
             {/* MENÚ COLAPSABLE (Centro) */}
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <div className="collapse navbar-collapse" id="navbarNavDropdown" ref={menuRef}>
               
               <ul className={`navbar-nav mx-auto text-center gap-2 gap-lg-1 mt-4 mt-lg-0 ${scrolled ? "with-logo" : ""}`}>
                 
                 <li className="nav-item">
                   <NavLink 
                     to="/" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     INICIO
@@ -86,6 +97,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <NavLink 
                     to="/promociones" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     PROMOCIONES
@@ -95,6 +107,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <NavLink 
                     to="/pizzas" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     PIZZAS
@@ -104,6 +117,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <NavLink 
                     to="/hamburguesas" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     HAMBURGUESAS
@@ -113,6 +127,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <NavLink 
                     to="/acompanamientos" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     ACOMPAÑAMIENTOS
@@ -122,6 +137,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <NavLink 
                     to="/bebidas" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     BEBIDAS
@@ -131,6 +147,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <NavLink 
                     to="/postres" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     POSTRES
@@ -140,6 +157,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <NavLink 
                     to="/extras" 
+                    onClick={closeMenu}
                     className={({ isActive }) => isActive ? "navbar-item active d-inline-block" : "navbar-item d-inline-block"}
                   >
                     EXTRAS
