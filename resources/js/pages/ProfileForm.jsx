@@ -58,7 +58,7 @@ const ProfileForm = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: "50vh" }}>
+    <div className="container d-flex justify-content-center align-items-center py-5" style={{ minHeight: "50vh" }}>
 
       <div className="row w-75 justify-content-center">
         <div className="col-12 mb-5">
