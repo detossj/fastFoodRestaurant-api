@@ -39,7 +39,7 @@ const Navbar = () => {
   const { totalItems } = useCart()
 
   return (
-    <div className="p-3 navbar-wrapper">
+    <div className="p-md-3 navbar-wrapper">
       <div className="container">
         {/* navbar-expand-lg le dice que en pantallas grandes (lg) expanda el menú, en menores lo colapse */}
         <nav className="navbar navbar-expand-lg">
