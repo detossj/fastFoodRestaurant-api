@@ -3,6 +3,7 @@ import './PromotionCard.css';
 import Config from '../Config'
 
 const PromotionCard = ({ promotion, onClick }) => {
+  const formattedPrice = Math.trunc(promotion.price).toLocaleString('es-CL');
   return (
     <div className="promotion-card shadow h-100">
 
@@ -26,7 +27,7 @@ const PromotionCard = ({ promotion, onClick }) => {
 
       <div className="product-bottom mb-3"  onClick={onClick}>
         <button className="add-cart-btn-card">
-          AGREGAR <span className="price">${Math.trunc(promotion.price)}</span>
+          AGREGAR <span className="price">${formattedPrice}</span>
         </button>
       </div>
 
