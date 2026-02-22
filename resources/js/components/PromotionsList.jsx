@@ -30,22 +30,19 @@ const PromotionsList = () => {
           </div>
         </div>
 
-        <div className="container p-5" style={{ minHeight: "100vh" }}>
+        <div className="container p-5" >
           <div className="row g-4">
             {promotions.map(promotion => (
               <div className="col-12 col-lg-6" key={promotion.id}>
                 <PromotionCard key={promotion.id} promotion={promotion} onClick={(e)=>showModal(e,promotion)} />
               </div>
             ))}
-            {
-              modal && <PromotionModal promotion={datamodal} close={setModal}/>
-            }
           </div>
         </div>
 
+        {modal && <PromotionModal promotion={datamodal} close={setModal}/>}
       </>      
-        
     );
 }
 
-export default PromotionsList
+export default PromotionsList;
