@@ -22,8 +22,11 @@ const TopBar = () => {
 
   const activeAuthPaths = ["/login", "/register"]
 
+  const activePerfilPaths = ["/perfil", "/pedidos"]
+
   const isMenuActive = activeMenuPaths.includes(location.pathname)
   const isAuthActive = activeAuthPaths.includes(location.pathname)
+  const isPerfilActive = activePerfilPaths.includes(location.pathname)
 
   return (
     <div className="py-2" style={{ borderBottom: "1px solid #e5e5e5" }}>
@@ -55,7 +58,7 @@ const TopBar = () => {
           {user ? (
             <div className="d-flex align-items-center gap-2">
 
-              <span className="topbar-item d-flex align-items-center gap-2">
+              <span className={isPerfilActive ? "topbar-item active d-flex align-items-center gap-2" : "topbar-item d-flex align-items-center gap-2"}>
                 <User />{user.name}
               </span>
 
