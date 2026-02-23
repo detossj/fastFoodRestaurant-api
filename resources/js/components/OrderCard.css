@@ -8,9 +8,8 @@
     overflow: hidden;
 }
 
-
 .order-v2-header {
-    padding: 30px;
+    padding: 15px 30px; 
     background: #ffffff;
     border-bottom: 2px dashed #f1f5f9;
     display: flex;
@@ -41,7 +40,7 @@
 }
 
 .order-v2-section {
-    padding: 30px;
+    padding: 15px 30px; 
 }
 
 .order-v2-title {
@@ -60,8 +59,7 @@
 .order-v2-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 30px;
+    padding: 15px 30px;
     background: #f8fafc;
 }
 
@@ -74,7 +72,7 @@
 }
 
 .order-v2-footer {
-    padding: 30px;
+    padding: 15px 30px;
     background: #fff;
     border-top: 1px solid #f1f5f9;
 }
