@@ -9,7 +9,7 @@ const OrderCard = ({ order }) => {
   return (
     <div className="order-card-v2 shadow">
 
-      <div className="order-v2-header">
+      <div className="order-v2-header pb-2">
         <div className="order-v2-id-group">
           <h2>Pedido #{order.id}</h2>
           <p className="order-v2-date">{new Date(order.created_at).toLocaleString('es-CL')}</p>
@@ -19,7 +19,7 @@ const OrderCard = ({ order }) => {
         </div>
       </div>
 
-      <div className="order-v2-section">
+      <div className="order-v2-section pt-2">
         <h4 className="order-v2-title">Resumen de Productos</h4>
         <div className="order-v2-products-list">
           {order.order_items.map(item => (
@@ -31,7 +31,7 @@ const OrderCard = ({ order }) => {
         </div>
       </div>
 
-      <div className="order-v2-info-grid">
+      <div className="order-v2-info-grid pb-2">
         <div className="info-block">
           <label>Dirección de Envío</label>
           <p><strong>{order.delivery_address}</strong></p>
@@ -46,7 +46,7 @@ const OrderCard = ({ order }) => {
         </div>
       </div>
 
-      <div className="order-v2-footer">
+      <div className="order-v2-footer pt-2">
         <div className="footer-line">
           <span>Subtotal</span>
           <span>{formatCurrency(order.subtotal)}</span>
