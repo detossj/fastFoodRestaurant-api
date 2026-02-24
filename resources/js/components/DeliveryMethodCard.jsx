@@ -52,42 +52,42 @@ const DeliveryMethodCard = ({tipoEntrega, setTipoEntrega, setDeliveryAddress}) =
                 </div>
 
                 {tipoEntrega === 'Delivery' ? (
-                     <div className="row g-3 animate__animated animate__fadeIn">
-                        <div className="col-md-8">
-                            <label className="form-label text-muted small fw-bold">Direccion</label>
-                            <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" value={user?.address || ''} onChange={(e) => setDeliveryAddress(e.target.value)} />
-                        </div>
-                        <div className="col-4">
-                            <label className="form-label text-muted small fw-bold">Comuna</label>
-                            <select className="form-select">
-                                {stores.map((store) => (
-                                    <option key={store.id}>{store.direction}</option>
-                                ))}
-                            </select>
-                        </div>
+                    <div className="row g-3 animate__animated animate__fadeIn">
+                    <div className="col-md-8">
+                        <label className="form-label text-muted small fw-bold">Direccion</label>
+                        <input type="text" className="form-control" placeholder="Ej: Av. Siempre Viva 123" value={user?.address || ''} onChange={(e) => setDeliveryAddress(e.target.value)} />
                     </div>
+                    <div className="col-md-4">
+                        <label className="form-label text-muted small fw-bold">Comuna</label>
+                        <select className="form-select">
+                            {stores.map((store) => (
+                                <option key={store.id}>{store.direction}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
                  
             ): (
 
-                    <>
-                        <div className="col-12">
-                                <label className="form-label text-muted small fw-bold">Comuna</label>
-                                <select className="form-select" onChange={handleStoreChange}>
-                                    {stores.map((store) => (
-                                        <option key={store.id} value={store.id}>{store.direction}</option>
-                                    ))}
-                                </select>
-                        </div>
-                        {direction && (
-                            <div className="alert alert-info d-flex align-items-center gap-2 mt-3" role="alert" style={{backgroundColor:'#FFF6EE', borderColor:'#FFDDC1', color:'#663C00'}}>
-                                <MapPin size={18} color="#ff7a00"/>
-                                <div>
-                                    <strong>Sucursal:</strong> {subDirection}, {direction}
-                                    <div className="small">Tu pedido estará listo en 20-30 minutos.</div>
-                                </div>
+                <>
+                    <div className="col-12">
+                            <label className="form-label text-muted small fw-bold">Comuna</label>
+                            <select className="form-select" onChange={handleStoreChange}>
+                                {stores.map((store) => (
+                                    <option key={store.id} value={store.id}>{store.direction}</option>
+                                ))}
+                            </select>
+                    </div>
+                    {direction && (
+                        <div className="alert alert-info d-flex align-items-center gap-2 mt-3" role="alert" style={{backgroundColor:'#FFF6EE', borderColor:'#FFDDC1', color:'#663C00'}}>
+                            <MapPin size={18} color="#ff7a00"/>
+                            <div>
+                                <strong>Sucursal:</strong> {subDirection}, {direction}
+                                <div className="small">Tu pedido estará listo en 20-30 minutos.</div>
                             </div>
-                        )}
-                    </>
+                        </div>
+                    )}
+                </>
                 )}
             </div>
         </div>
