@@ -46,7 +46,7 @@ const ProfileForm = () => {
 
     try {
       const response = await Config.updateProfile(formData);
-
+      
       updateUser(response.data.user)
       toast.success("Perfil actualizado correctamente")
     } catch (error) {
@@ -60,14 +60,14 @@ const ProfileForm = () => {
   return (
     <div className="container d-flex justify-content-center align-items-center py-5" style={{ minHeight: "50vh" }}>
 
-      <div className="row w-75 justify-content-center">
-        <div className="col-12 mb-5">
+      <div className="row justify-content-center w-100">
+        <div className="col-12 col-md-9 mb-5">
             <div className="card shadow-sm border p-4">
 
               <form onSubmit={handleSubmit}>
-                <div className="row mb-3">
+                <div className="row mb-md-3">
                   <div className="col-md-5">
-                    <label className="form-label">Nombre</label>
+                    <label className="form-label mt-2 mt-md-0">Nombre</label>
                     <div className="input-group">
                       <span className="input-group-text">
                         <FaUser />
@@ -83,7 +83,7 @@ const ProfileForm = () => {
                   </div>
 
                   <div className="col-md-7">
-                    <label className="form-label">Correo</label>
+                    <label className="form-label mt-2 mt-md-0">Correo</label>
                     <div className="input-group">
                       <span className="input-group-text">
                         <FaEnvelope />
@@ -99,9 +99,9 @@ const ProfileForm = () => {
                   </div>
                 </div>
 
-                <div className="row mb-3">
+                <div className="row mb-md-3">
                   <div className="col-md-7">
-                    <label className="form-label">Dirección</label>
+                    <label className="form-label mt-2 mt-md-0">Dirección</label>
                     <div className="input-group">
                       <span className="input-group-text">
                         <FaMapMarkerAlt />
@@ -117,7 +117,7 @@ const ProfileForm = () => {
                   </div>
 
                   <div className="col-md-5">
-                    <label className="form-label">Teléfono</label>
+                    <label className="form-label mt-2 mt-md-0">Teléfono</label>
                     <div className="input-group">
                       <span className="input-group-text">
                         <FaPhone />
@@ -135,7 +135,7 @@ const ProfileForm = () => {
 
                 <div className="row mb-3">
                   <div className="col-md-6">
-                    <label className="form-label">Contraseña</label>
+                    <label className="form-label mt-2 mt-md-0">Contraseña</label>
                     <div className="input-group">
                       <span className="input-group-text">
                         <FaLock />
@@ -151,7 +151,7 @@ const ProfileForm = () => {
                   </div>
 
                   <div className="col-md-6">
-                    <label className="form-label">Confirmar contraseña</label>
+                    <label className="form-label mt-2 mt-md-0">Confirmar contraseña</label>
                     <div className="input-group">
                       <span className="input-group-text">
                         <FaLock />
@@ -167,7 +167,7 @@ const ProfileForm = () => {
                   </div>
                 </div>
 
-                <button className="cart-pay-btn" disabled={loading}>
+                <button className="cart-pay-btn mt-3 w-100" disabled={loading}>
                   {loading ? 'Guardando cambios...' : 'GUARDAR CAMBIOS' }
                 </button>
               </form>
