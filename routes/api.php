@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ManageController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\StoreController;
-use App\Http\Controllers\ManageController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PromotionController;
 
 
 // Public
@@ -17,6 +18,7 @@ Route::get('/products', [ProductController::class,'allProducts']);
 Route::get('/categories', [CategoryController::class,'allCategories']);
 Route::get('/promotions', [PromotionController::class,'allPromotions']);
 Route::get('/stores', [StoreController::class,'allStores']);
+Route::post('/enviar-correo',[EmailController::class, 'enviar']);
 
 // Auth
 Route::post('/auth/register',[AuthController::class, 'register']);
