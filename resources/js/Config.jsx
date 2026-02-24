@@ -33,6 +33,7 @@ export default {
   getAllCategories: () => api.get("/categories"),
   getAllPromotions: () => api.get("/promotions"),
   getAllStores: () => api.get("/stores"),
+  enviarCorreo: (data) => api.post("/enviar-correo",data),
 
   // ORDERS
   createOrder: (data) => api.post("/orders", data),
