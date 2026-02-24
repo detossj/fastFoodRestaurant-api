@@ -12,16 +12,40 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [cart, setCart] = useState(false)
   const menuRef = useRef(null);
+  const togglerRef = useRef(null); // <-- Nuevo Ref para el botón hamburguesa
 
   useEffect(() => {
     // Funcion para que la navbar quede pegada arriba al scrollear
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // si baja más de 50px activa el logo
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // <-- NUEVO: useEffect para detectar clics fuera del menú
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Si el menú existe, el clic no fue dentro del menú, y tampoco fue en el botón de hamburguesa
+      if (
+        menuRef.current && !menuRef.current.contains(event.target) &&
+        togglerRef.current && !togglerRef.current.contains(event.target)
+      ) {
+        // Verificamos si el menú está abierto (tiene la clase 'show' de Bootstrap)
+        if (menuRef.current.classList.contains('show')) {
+          closeMenu();
+        }
+      }
+    };
+
+    // Escuchamos los clics en todo el documento
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  // <-- FIN NUEVO
 
   const showCart = (e) => {
     e.preventDefault();
@@ -66,6 +90,7 @@ const Navbar = () => {
 
               {/* Botón Hamburguesa nativo de Bootstrap */}
               <button 
+                ref={togglerRef} 
                 className="navbar-toggler border-0 px-1" 
                 type="button" 
                 data-bs-toggle="collapse" 
@@ -79,7 +104,7 @@ const Navbar = () => {
 
             </div>
 
-            {/* MENÚ COLAPSABLE (Centro) */}
+            {/* Este ref={menuRef} ya lo tenías, asegúrate de mantenerlo */}
             <div className="collapse navbar-collapse" id="navbarNavDropdown" ref={menuRef}>
               
               <ul className={`navbar-nav mx-auto text-center gap-2 gap-lg-1 mt-4 mt-lg-0 ${scrolled ? "with-logo" : ""}`}>
