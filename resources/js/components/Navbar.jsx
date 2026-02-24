@@ -12,19 +12,19 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [cart, setCart] = useState(false)
   const menuRef = useRef(null);
-  const togglerRef = useRef(null); // <-- Nuevo Ref para el botón hamburguesa
+  const togglerRef = useRef(null);
 
   useEffect(() => {
     // Funcion para que la navbar quede pegada arriba al scrollear
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 50); // si baja más de 50px activa el logo
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // <-- NUEVO: useEffect para detectar clics fuera del menú
+  // useEffect para detectar clics fuera del menú
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Si el menú existe, el clic no fue dentro del menú, y tampoco fue en el botón de hamburguesa
@@ -45,7 +45,7 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  // <-- FIN NUEVO
+
 
   const showCart = (e) => {
     e.preventDefault();
@@ -104,7 +104,7 @@ const Navbar = () => {
 
             </div>
 
-            {/* Este ref={menuRef} ya lo tenías, asegúrate de mantenerlo */}
+            {/* MENÚ COLAPSABLE (Centro) */}
             <div className="collapse navbar-collapse" id="navbarNavDropdown" ref={menuRef}>
               
               <ul className={`navbar-nav mx-auto text-center gap-2 gap-lg-1 mt-4 mt-lg-0 ${scrolled ? "with-logo" : ""}`}>
