@@ -56,44 +56,37 @@ const TopBar = () => {
 
 
           {user ? (
-            <div className="d-flex align-items-center gap-2">
-
-              <span className={isPerfilActive ? "topbar-item active d-flex align-items-center gap-2" : "topbar-item d-flex align-items-center gap-2"}>
+            <div className="dropdown">
+              <span 
+                className={`topbar-item dropdown-toggle d-flex align-items-center gap-2 ${isPerfilActive ? 'active' : ''}`}
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style={{ cursor: "pointer" }}
+              >
                 <User />{user.name}
               </span>
 
-              <div className="dropdown">
-                <a
-                  href="#"
-                  className="topbar-item dropdown-toggle"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                </a>
-
-                <ul className="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <NavLink className="dropdown-item" to="/perfil">
-                      Perfil
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink className="dropdown-item" to="/pedidos">
-                      Pedidos
-                    </NavLink>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item text-danger"
-                      onClick={logout}
-                    >
-                      Cerrar sesión
-                    </button>
-                  </li>
-                </ul>
-              </div>
-
+              <ul className="dropdown-menu dropdown-menu-end">
+                <li>
+                  <NavLink className="dropdown-item" to="/perfil">
+                    Perfil
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/pedidos">
+                    Pedidos
+                  </NavLink>
+                </li>
+                <li>
+                  <button
+                    className="dropdown-item text-danger"
+                    onClick={logout}
+                  >
+                    Cerrar sesión
+                  </button>
+                </li>
+              </ul>
             </div>
           ) : (
             <NavLink
