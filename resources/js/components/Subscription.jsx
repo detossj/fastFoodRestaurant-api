@@ -47,7 +47,7 @@ const Subscription = () => {
   }
 
   return (
-    <div className="py-5" style={{ background: "#fff6ee" }}>
+    <div className="py-5 px-5 px-md-0" style={{ background: "#fff6ee" }}>
       <div className="container text-center">
         
         <h3 className="text-center mb-4">
