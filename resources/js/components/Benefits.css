@@ -1,0 +1,11 @@
+/* Tamaños para Celular*/
+.icon-responsive { font-size: 24px; }
+.title-responsive { font-size: 16px; }
+.text-responsive { font-size: 14px; }
+
+/* Tamaños para Escritorio*/
+@media (min-width: 768px) {
+  .icon-responsive { font-size: 32px; } 
+  .title-responsive { font-size: 20px; } 
+  .text-responsive { font-size: 16px; } 
+}
