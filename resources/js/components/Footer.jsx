@@ -14,7 +14,7 @@ const Footer = () => {
     <footer className="footer-papa py-5">
       <div className="container">
         
-        <div className="row mb-4 gy-4 text-center text-md-start"> 
+        <div className="row mb-4 px-1 px-md-0 gy-4 text-center text-md-start"> 
           
           <div className="col-12 col-md-4 col-lg-3">
 
@@ -34,7 +34,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-12 col-md-4 col-lg-3">
+          <div className="col-4 col-md-4 col-lg-3">
             <h5 className="fw-bold mb-md-3">FAST FOOD</h5>
             <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-md-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Acerca de nosotros</a></li>
@@ -44,7 +44,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="col-12 col-md-4 col-lg-3">
+          <div className="col-4 col-md-4 col-lg-3">
             <h5 className="fw-bold mb-md-3">AYUDA</h5>
             <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-md-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Preguntas frecuentes</a></li>
@@ -55,7 +55,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="col-12 col-md-4 col-lg-3">
+          <div className="col-4 col-md-4 col-lg-3">
             <h5 className="fw-bold mb-md-3">LEGAL</h5>
             <ul className="list-unstyled footer-list d-flex flex-column align-items-center align-items-md-start gap-md-2">
               <li><a href="#" className="footer-link" onClick={handleLinkClick}>Términos y Condiciones</a></li>
