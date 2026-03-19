@@ -109,9 +109,9 @@ const ManageList = () => {
   }
 
   return (
-    <div className="container p-5" style={{ minHeight: '100vh' }}>
+  <div className="container p-3 p-md-5" style={{ minHeight: '100vh' }}>
 
-      <h2 className="mb-4 text-center fw-bold">Gestión de Productos y Promociones</h2>
+    <h2 className="mb-4 text-center fw-bold">Gestión de Productos y Promociones</h2>
 
       <div className="filters mb-4">
         <select value={filterType} onChange={e => setFilterType(e.target.value)}>
