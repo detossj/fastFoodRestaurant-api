@@ -1,10 +1,14 @@
 import axios from "axios";
 
+
+// Vite detecta automáticamente si estoy en producción
+const isProduction = import.meta.env.MODE === 'production';
 const ipLocal = import.meta.env.VITE_IP_LOCAL;
 
-const API_BASE_URL = `http://${ipLocal}:8000`;
-const API_URL = `${API_BASE_URL}/api`;
-const BASE_URL_IMAGES = `http://${ipLocal}/storage`;
+// Si es producción, usamos rutas relativas.
+const API_BASE_URL = isProduction ? '' : `http://${ipLocal}:8000`;
+const API_URL = isProduction ? '/api' : `${API_BASE_URL}/api`;
+const BASE_URL_IMAGES = isProduction ? '/storage' : `http://${ipLocal}/storage`;
 
 // es mejor hacer esto que axios.interceptors.request.use... porque haciendolo con axios afecta todas las request del proyecto
 const api = axios.create({
