@@ -7,10 +7,10 @@ php artisan route:cache
 php artisan view:cache
 
 echo "Ejecutando migraciones de la base de datos..."
-# php artisan migrate --force
+php artisan migrate --force
 
 echo "Ejecutando seeders..."
-#php artisan db:seed --force 
+php artisan db:seed --force 
 
 
 echo "🔗 Creando enlace de almacenamiento para las imágenes..."
